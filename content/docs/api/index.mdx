@@ -1,0 +1,108 @@
+---
+title: API
+description: Bienvenue dans ce cours sur les API.
+---
+<Callout 
+  customTextColor="text-[#ff990a] text-sm"
+  borderWidth="1px"
+>
+
+Complete this course and earn ***10K free requests*** from our API :)
+</Callout>
+
+<div className="flex items-center gap-2">
+  <h1 className="text-2xl font-bold mr-2">What is an API ?</h1>
+  <Badge variant="blue">
+    Tutorial
+  </Badge>
+    <Badge variant="pink">
+    Basic
+  </Badge>
+</div>
+
+API stands for Application Programming Interface. It is a way for software to communicate with each other, much like a bridge that allows them to exchange information or perform actions for each other, without having to share all their code.
+
+This is an example of a doc site built using [ContentLayer](/docs/documentation/contentlayer) and MDX.
+
+
+
+<Callout 
+  customTextColor="text-blue-500 text-sm"
+  customBorderColor="border-blue-500"
+  borderWidth="1px"
+>
+
+This site is a work in progress. If you see dummy text on a page, it means I'm still working on it. You can follow updates on Twitter [@shadcn](https://twitter.com/shadcn).
+
+</Callout>
+
+
+## What is an API used for?
+
+An `API` is used to:
+
+1. Enable communication between two software programs: For example, a weather app on your phone uses an API to get weather data from a server.
+2. Automate tasks: An API allows you to perform certain tasks automatically (send messages, retrieve information, make transactions, etc.).
+3. Facilitate development: Instead of coding each feature from scratch, developers can use APIs to integrate existing features (like online payments or geolocation) into their applications.
+
+## How does an API work?
+
+To understand how an API works, let’s take a <span style={{ color: '#c472fb' }}>`restaurant analogy`</span>.
+
+
+Imagine you’re in a restaurant. You’re the customer "like an app", and you want to order a dish.
+The <span style={{ color: '#c472fb' }}>`menu`</span> represents what the restaurant offers, it’s like the <span style={{ color: '#c472fb' }}>`API Docs`</span> that describes what the API can do.
+The <span style={{ color: '#c472fb' }}>`server`</span> acts as the API: it takes your order, passes it to the kitchen "the internal system", and then brings you your dish.
+
+The API works in a similar way: it takes a request, passes it to another system, and then returns the response to the requester.
+
+As you prefer we can show that like this :
+
+| `Kitchen`                | `Client`       | `restaurant server`           | Docs |
+| ----------------------- | ------------ | ------------------ | --------------- |
+| Database  | You        | API | Menu |
+
+## Common Request Types in APIs
+
+APIs use requests to request or send data. Here are some common request types:
+
+- <span style={{ color: '#00ca50' }}>`GET`</span> : Retrieves data (e.g., getting a user's information).
+- <span style={{ color: '#00cfb7' }}>`POST`</span> : Sends data to create something new (e.g., creating a new user account).
+- <span style={{ color: '#ff990a' }}>`PUT`</span> : Modifies existing data (e.g., updating a user's profile).
+- <span style={{ color: '#fc0135' }}>`DELETE`</span> : Deletes data (e.g., deleting a user account).
+
+<div className="grid sm:grid-cols-2 gap-4 mt-6">
+
+<Card href="/docs/documentation">
+
+### Documentation
+
+This documentation site built using Contentlayer.
+
+</Card>
+
+<Card href="/docs/marketing" disabled>
+
+### Marketing
+
+The marketing site with landing pages.
+
+</Card>
+
+<Card href="/docs/app" disabled>
+
+### App
+
+The dashboard with auth and subscriptions.
+
+</Card>
+
+<Card href="/docs/blog" disabled>
+
+### Blog
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+</div>

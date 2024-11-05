@@ -1,142 +1,120 @@
-import {
-    FaApple,
-    FaDiscord,
-    FaRedditAlien,
-    FaTelegramPlane,
-    FaTwitter,
-} from 'react-icons/fa';
+import Link from "next/link";
+import { ModeToggle } from "./mode-toggle";
 
-import { Separator } from '@/components/ui/separator';
-import React from 'react';
+export const Footer1 = () => {
+    const navigationItems = [
+        {
+            title: "Home",
+            href: "/",
+            description: "",
+        },
+        {
+            title: "Product",
+            description: "Managing a small business today is already tough.",
+            items: [
+                {
+                    title: "Reports",
+                    href: "/reports",
+                },
+                {
+                    title: "Statistics",
+                    href: "/statistics",
+                },
+                {
+                    title: "Dashboards",
+                    href: "/dashboards",
+                },
+                {
+                    title: "Recordings",
+                    href: "/recordings",
+                },
+            ],
+        },
+        {
+            title: "Company",
+            description: "Managing a small business today is already tough.",
+            items: [
+                {
+                    title: "About us",
+                    href: "/about",
+                },
+                {
+                    title: "Fundraising",
+                    href: "/fundraising",
+                },
+                {
+                    title: "Investors",
+                    href: "/investors",
+                },
+                {
+                    title: "Contact us",
+                    href: "/contact",
+                },
+            ],
+        },
+    ];
 
-const sections = [
-    {
-        title: 'Product',
-        links: [
-            { name: 'Overview', href: '#' },
-            { name: 'Pricing', href: '#' },
-            { name: 'Marketplace', href: '#' },
-            { name: 'Features', href: '#' },
-            { name: 'Integrations', href: '#' },
-            { name: 'Pricing', href: '#' },
-        ],
-    },
-    {
-        title: 'Company',
-        links: [
-            { name: 'About', href: '#' },
-            { name: 'Team', href: '#' },
-            { name: 'Blog', href: '#' },
-            { name: 'Careers', href: '#' },
-            { name: 'Contact', href: '#' },
-            { name: 'Privacy', href: '#' },
-        ],
-    },
-    {
-        title: 'Resources',
-        links: [
-            { name: 'Help', href: '#' },
-            { name: 'Sales', href: '#' },
-            { name: 'Advertise', href: '#' },
-        ],
-    },
-];
-
-const Footer1 = () => {
     return (
-        <section className="py-32">
-            <div className="container">
-                <footer>
-                    <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                        <img
-                            src="https://www.shadcnblocks.com/images/block/logos/shadcn-ui.svg"
-                            alt="logo"
-                            className="mb-8 mr-auto h-7 md:mb-0"
-                        />
-                        <div className="flex flex-col gap-4 md:flex-row md:items-center">
-                            <p className="text-lg font-medium">
-                                Copy the code and make it yours.
+        <div className="w-full py-20 lg:py-10">
+            <div className="container mx-auto">
+                <div className="grid lg:grid-cols-2 gap-10 items-center">
+                    <div className="flex gap-8 flex-col items-start">
+                        <div className="flex gap-2 flex-col">
+                            <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left">
+                                Buster™
+                            </h2>
+                            <p className="text-lg max-w-lg leading-relaxed tracking-tight text-left">
+                                Managing a small business today is already tough.
                             </p>
-                            <div className="flex gap-2">
-                                <a
-                                    href="#"
-                                    className="inline-flex items-center justify-center rounded-lg bg-primary p-2.5"
-                                >
-                                    <FaApple className="size-7 text-background" />
-                                </a>
-                                <a
-                                    href="#"
-                                    className="inline-flex items-center justify-center rounded-lg bg-primary p-2.5"
-                                >
-                                    <img
-                                        src="images/icons/google-play-icon.svg"
-                                        className="size-6 text-background"
-                                        alt="google play"
-                                    />
-                                </a>
+                        </div>
+                        <div className="flex gap-20 flex-row">
+                            <div className="flex flex-col text-sm max-w-lg leading-relaxed tracking-tight  text-left">
+                                <p>1 Tailwind Way</p>
+                                <p>Menlo Park</p>
+                                <p>CA 94025</p>
+                                <ModeToggle />
+                            </div>
+                            <div className="flex flex-col text-sm max-w-lg leading-relaxed tracking-tight text-left">
+                                <Link href="/">Terms of service</Link>
+                                <Link href="/">Privacy Policy</Link>
                             </div>
                         </div>
                     </div>
-                    <Separator className="my-14" />
-                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                        {sections.map((section, sectionIdx) => (
-                            <div key={sectionIdx}>
-                                <h3 className="mb-4 font-bold">{section.title}</h3>
-                                <ul className="space-y-4 text-muted-foreground">
-                                    {section.links.map((link, linkIdx) => (
-                                        <li
-                                            key={linkIdx}
-                                            className="font-medium hover:text-primary"
+                    <div className="grid lg:grid-cols-3 gap-10 items-start">
+                        {navigationItems.map((item) => (
+                            <div
+                                key={item.title}
+                                className="flex text-base gap-1 flex-col items-start"
+                            >
+                                <div className="flex flex-col gap-2">
+                                    {item.href ? (
+                                        <Link
+                                            href={item.href}
+                                            className="flex justify-between items-center"
                                         >
-                                            <a href={link.href}>{link.name}</a>
-                                        </li>
-                                    ))}
-                                </ul>
+                                            <span className="text-sm font-bold">{item.title}</span>
+                                        </Link>
+                                    ) : (
+                                        <p className="text-sm font-bold">{item.title}</p>
+                                    )}
+                                    {item.items &&
+                                        item.items.map((subItem) => (
+                                            <Link
+                                                key={subItem.title}
+                                                href={subItem.href}
+                                                className="flex justify-between items-center"
+                                            >
+                                                <span className="text-sm">
+                                                    {subItem.title}
+                                                </span>
+                                            </Link>
+                                        ))}
+                                </div>
                             </div>
                         ))}
-                        <div>
-                            <h3 className="mb-4 font-bold">Legal</h3>
-                            <ul className="space-y-4 text-muted-foreground">
-                                <li className="font-medium hover:text-primary">
-                                    <a href="#">Term of Services</a>
-                                </li>
-                                <li className="font-medium hover:text-primary">
-                                    <a href="#">Privacy Policy</a>
-                                </li>
-                            </ul>
-                            <h3 className="mb-4 mt-8 font-bold">Social</h3>
-                            <ul className="flex items-center space-x-6 text-muted-foreground">
-                                <li className="font-medium hover:text-primary">
-                                    <a href="#">
-                                        <FaDiscord className="size-6" />
-                                    </a>
-                                </li>
-                                <li className="font-medium hover:text-primary">
-                                    <a href="#">
-                                        <FaRedditAlien className="size-6" />
-                                    </a>
-                                </li>
-                                <li className="font-medium hover:text-primary">
-                                    <a href="#">
-                                        <FaTwitter className="size-6" />
-                                    </a>
-                                </li>
-                                <li className="font-medium hover:text-primary">
-                                    <a href="#">
-                                        <FaTelegramPlane className="size-6" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                    <Separator className="my-14" />
-                    <p className="text-sm text-muted-foreground">
-                        © 2024 Shadcnblocks. All rights reserved.
-                    </p>
-                </footer>
+                </div>
             </div>
-        </section>
+        </div>
     );
 };
-
-export default Footer1;

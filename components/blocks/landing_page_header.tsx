@@ -39,7 +39,13 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                 <div className="container mb-10">
                     <div className="text-center">
                         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-                            Insights
+                            Find the best API
+                        </h1>
+                        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mt-2">
+                            Access to data
+                        </h1>
+                        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mt-2">
+                            Grow fast
                         </h1>
                         <p className="mt-3 text-xl text-muted-foreground">
                             Stay in the know with insights from industry experts.
@@ -50,13 +56,13 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                                 <div className="relative z-10 flex space-x-3 p-3 border bg-background rounded-lg shadow-lg">
                                     <div className="flex-[1_0_0%]">
                                         <Label htmlFor="article" className="sr-only">
-                                            Search article
+                                            Search API
                                         </Label>
                                         <Input
                                             name="article"
                                             className="h-full"
                                             id="article"
-                                            placeholder="Search article"
+                                            placeholder="Search API"
                                         />
                                     </div>
                                     <div className="flex-[0_0_auto]">
@@ -70,7 +76,7 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                             {/* SVG Element */}
                             <div className="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
                                 <svg
-                                    className="w-16 h-auto text-orange-500"
+                                    className="w-16 h-auto text-red-500"
                                     width={121}
                                     height={135}
                                     viewBox="0 0 121 135"
@@ -101,7 +107,7 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                             {/* SVG Element */}
                             <div className="hidden md:block absolute bottom-0 start-0 translate-y-10 -translate-x-32">
                                 <svg
-                                    className="w-40 h-auto text-cyan-500"
+                                    className="w-40 h-auto text-blue-500"
                                     width={347}
                                     height={188}
                                     viewBox="0 0 347 188"
@@ -121,6 +127,54 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                         </div>
 
                         <div className="mt-10 sm:mt-20 flex flex-wrap gap-2 justify-center">
+                            <Button variant={"outline"}>
+                                <Briefcase className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Business
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Settings className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Strategy
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Heart className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Health
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Lightbulb className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Creative
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Flower className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Environment
+                            </Button>
+                            <Button variant={"outline"}>
+                                <MountainSnow className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Adventure
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Briefcase className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Business
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Settings className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Strategy
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Heart className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Health
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Lightbulb className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Creative
+                            </Button>
+                            <Button variant={"outline"}>
+                                <Flower className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Environment
+                            </Button>
+                            <Button variant={"outline"}>
+                                <MountainSnow className="flex-shrink-0 w-3 h-auto mr-2" />
+                                Adventure
+                            </Button>
                             <Button variant={"outline"}>
                                 <Briefcase className="flex-shrink-0 w-3 h-auto mr-2" />
                                 Business

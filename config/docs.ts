@@ -22,6 +22,15 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "API",
+      items: [
+        {
+          title: "What is an API ?",
+          href: "/docs/api",
+        },
+      ],
+    },
+    {
       title: "Documentation",
       items: [
         {

@@ -5,6 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { MdxCard } from "@/components/mdx-card"
+import { Badge } from "./ui/badge"
 
 const components = {
   h1: ({ className, ...props }) => (
@@ -147,6 +148,7 @@ const components = {
       {...props}
     />
   ),
+  Badge,
   Image,
   Callout,
   Card: MdxCard,

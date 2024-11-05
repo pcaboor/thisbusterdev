@@ -29,6 +29,7 @@ import {
   Key,
   X,
   Code,
+
   type Icon as LucideIcon,
 
 } from "lucide-react"
@@ -36,7 +37,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
-  logo: Command,
+  logo: HandMetal,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,

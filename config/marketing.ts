@@ -7,6 +7,10 @@ export const marketingConfig: MarketingConfig = {
       href: "/#features",
     },
     {
+      title: "API",
+      href: "/products",
+    },
+    {
       title: "Pricing",
       href: "/pricing",
     },

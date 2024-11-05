@@ -24,7 +24,7 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "API",
-      href: "/api",
+      href: "/dashboard/products",
       icon: "cloud",
     },
     {
