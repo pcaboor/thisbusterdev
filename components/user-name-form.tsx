@@ -23,6 +23,8 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
+
+
 interface UserNameFormProps extends React.HTMLAttributes<HTMLFormElement> {
   user: Pick<User, "id" | "name">
 }
@@ -81,8 +83,8 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
     >
       <Card>
         <CardHeader>
-          <CardTitle>Your Name</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-s">Your Name</CardTitle>
+          <CardDescription className="text-sm">
             Please enter your full name or a display name you are comfortable
             with.
           </CardDescription>
@@ -94,7 +96,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
             </Label>
             <Input
               id="name"
-              className="w-[400px]"
+              className="w-[400px] text-sm"
               size={32}
               {...register("name")}
             />

@@ -19,17 +19,13 @@ export const docsConfig: DocsConfig = {
           title: "Introduction",
           href: "/docs",
         },
-        {
-          title: "Buster",
-          href: "/",
-        },
       ],
     },
     {
       title: "Documentation",
       items: [
         {
-          title: "Introduction",
+          title: "What is Buster ?",
           href: "/docs/documentation",
         },
         {

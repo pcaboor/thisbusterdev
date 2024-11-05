@@ -7,6 +7,10 @@ export const dashboardConfig: DashboardConfig = {
       href: "/docs",
     },
     {
+      title: "Market Place",
+      href: "/marketing",
+    },
+    {
       title: "Support",
       href: "/support",
       disabled: true,
@@ -14,29 +18,34 @@ export const dashboardConfig: DashboardConfig = {
   ],
   sidebarNav: [
     {
-      title: "Posts",
+      title: "Hello",
       href: "/dashboard",
-      icon: "post",
+      icon: "handMetal",
+    },
+    {
+      title: "API",
+      href: "/api",
+      icon: "cloud",
+    },
+    {
+      title: "API Token",
+      href: "/dashboard/api/token",
+      icon: "key",
+    },
+    {
+      title: "Storage",
+      href: "/dashboard/storage",
+      icon: "package",
     },
     {
       title: "Billing",
       href: "/dashboard/billing",
-      icon: "billing",
+      icon: "wallet",
     },
     {
-      title: "Settings",
-      href: "/dashboard/settings",
-      icon: "settings",
-    },
-    {
-      title: "Settings",
-      href: "/dashboard/settings",
-      icon: "settings",
-    },
-    {
-      title: "Settings",
-      href: "/dashboard/settings",
-      icon: "settings",
+      title: "Integration",
+      href: "/dashboard/integration",
+      icon: "codeXml",
     },
     {
       title: "Settings",

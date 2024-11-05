@@ -1,4 +1,11 @@
 {
+  "/api/posts/route": "app/api/posts/route.js",
+  "/(marketing)/[...slug]/page": "app/(marketing)/[...slug]/page.js",
+  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
   "/(marketing)/page": "app/(marketing)/page.js",
-  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js"
+  "/(editor)/editor/[postId]/page": "app/(editor)/editor/[postId]/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/dashboard/billing/page": "app/(dashboard)/dashboard/billing/page.js",
+  "/(dashboard)/dashboard/settings/page": "app/(dashboard)/dashboard/settings/page.js",
+  "/(docs)/docs/[[...slug]]/page": "app/(docs)/docs/[[...slug]]/page.js"
 }

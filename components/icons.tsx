@@ -10,7 +10,10 @@ import {
   FileText,
   HelpCircle,
   Image,
+  Cloud,
   Laptop,
+  Wallet,
+  Package,
   Loader2,
   LucideProps,
   Moon,
@@ -18,12 +21,16 @@ import {
   Pizza,
   Plus,
   Settings,
+  HandMetal,
   SunMedium,
   Trash,
   Twitter,
   User,
+  Key,
   X,
+  Code,
   type Icon as LucideIcon,
+
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -40,6 +47,10 @@ export const Icons = {
   media: Image,
   settings: Settings,
   billing: CreditCard,
+  codeXml: Code,
+  cloud: Cloud,
+  package: Package,
+  key: Key,
   ellipsis: MoreVertical,
   add: Plus,
   warning: AlertTriangle,
@@ -49,6 +60,8 @@ export const Icons = {
   pizza: Pizza,
   sun: SunMedium,
   moon: Moon,
+  handMetal: HandMetal,
+  wallet: Wallet,
   laptop: Laptop,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
