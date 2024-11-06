@@ -144,7 +144,8 @@ var contentlayer_config_default = makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "nord",
+          theme: "dark-plus",
+
           onVisitLine(node) {
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }];

@@ -151,7 +151,14 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "nord",
+          theme: "dark-plus",
+          onVisitLine(node) {
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+            // Ajout d'une classe pour les lignes numérotées
+            node.properties.className = ["line"];
+          },
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

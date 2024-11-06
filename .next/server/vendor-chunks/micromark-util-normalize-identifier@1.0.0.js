@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "vendor-chunks/micromark-util-normalize-identifier@1.0.0";
+exports.ids = ["vendor-chunks/micromark-util-normalize-identifier@1.0.0"];
+exports.modules = {
+
+/***/ "(rsc)/./node_modules/.pnpm/micromark-util-normalize-identifier@1.0.0/node_modules/micromark-util-normalize-identifier/dev/index.js":
+/*!************************************************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/micromark-util-normalize-identifier@1.0.0/node_modules/micromark-util-normalize-identifier/dev/index.js ***!
+  \************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   normalizeIdentifier: () => (/* binding */ normalizeIdentifier)\n/* harmony export */ });\n/* harmony import */ var micromark_util_symbol_values_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! micromark-util-symbol/values.js */ \"(rsc)/./node_modules/.pnpm/micromark-util-symbol@1.0.1/node_modules/micromark-util-symbol/values.js\");\n\n/**\n * Normalize an identifier (such as used in definitions).\n *\n * @param {string} value\n * @returns {string}\n */ function normalizeIdentifier(value) {\n    return value// Collapse Markdown whitespace.\n    .replace(/[\\t\\n\\r ]+/g, micromark_util_symbol_values_js__WEBPACK_IMPORTED_MODULE_0__.values.space)// Trim.\n    .replace(/^ | $/g, \"\")// Some characters are considered “uppercase”, but if their lowercase\n    // counterpart is uppercased will result in a different uppercase\n    // character.\n    // Hence, to get that form, we perform both lower- and uppercase.\n    // Upper case makes sure keys will not interact with default prototypal\n    // methods: no method is uppercase.\n    .toLowerCase().toUpperCase();\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvLnBucG0vbWljcm9tYXJrLXV0aWwtbm9ybWFsaXplLWlkZW50aWZpZXJAMS4wLjAvbm9kZV9tb2R1bGVzL21pY3JvbWFyay11dGlsLW5vcm1hbGl6ZS1pZGVudGlmaWVyL2Rldi9pbmRleC5qcyIsIm1hcHBpbmdzIjoiOzs7OztBQUFzRDtBQUV0RDs7Ozs7Q0FLQyxHQUNNLFNBQVNDLG9CQUFvQkMsS0FBSztJQUN2QyxPQUNFQSxLQUNFLGdDQUFnQztLQUMvQkMsT0FBTyxDQUFDLGVBQWVILG1FQUFNQSxDQUFDSSxLQUFLLENBQ3BDLFFBQVE7S0FDUEQsT0FBTyxDQUFDLFVBQVUsR0FDbkIscUVBQXFFO0lBQ3JFLGlFQUFpRTtJQUNqRSxhQUFhO0lBQ2IsaUVBQWlFO0lBQ2pFLHVFQUF1RTtJQUN2RSxtQ0FBbUM7S0FDbENFLFdBQVcsR0FDWEMsV0FBVztBQUVsQiIsInNvdXJjZXMiOlsid2VicGFjazovL3RheG9ub215Ly4vbm9kZV9tb2R1bGVzLy5wbnBtL21pY3JvbWFyay11dGlsLW5vcm1hbGl6ZS1pZGVudGlmaWVyQDEuMC4wL25vZGVfbW9kdWxlcy9taWNyb21hcmstdXRpbC1ub3JtYWxpemUtaWRlbnRpZmllci9kZXYvaW5kZXguanM/ODVmMiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge3ZhbHVlc30gZnJvbSAnbWljcm9tYXJrLXV0aWwtc3ltYm9sL3ZhbHVlcy5qcydcblxuLyoqXG4gKiBOb3JtYWxpemUgYW4gaWRlbnRpZmllciAoc3VjaCBhcyB1c2VkIGluIGRlZmluaXRpb25zKS5cbiAqXG4gKiBAcGFyYW0ge3N0cmluZ30gdmFsdWVcbiAqIEByZXR1cm5zIHtzdHJpbmd9XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBub3JtYWxpemVJZGVudGlmaWVyKHZhbHVlKSB7XG4gIHJldHVybiAoXG4gICAgdmFsdWVcbiAgICAgIC8vIENvbGxhcHNlIE1hcmtkb3duIHdoaXRlc3BhY2UuXG4gICAgICAucmVwbGFjZSgvW1xcdFxcblxcciBdKy9nLCB2YWx1ZXMuc3BhY2UpXG4gICAgICAvLyBUcmltLlxuICAgICAgLnJlcGxhY2UoL14gfCAkL2csICcnKVxuICAgICAgLy8gU29tZSBjaGFyYWN0ZXJzIGFyZSBjb25zaWRlcmVkIOKAnHVwcGVyY2FzZeKAnSwgYnV0IGlmIHRoZWlyIGxvd2VyY2FzZVxuICAgICAgLy8gY291bnRlcnBhcnQgaXMgdXBwZXJjYXNlZCB3aWxsIHJlc3VsdCBpbiBhIGRpZmZlcmVudCB1cHBlcmNhc2VcbiAgICAgIC8vIGNoYXJhY3Rlci5cbiAgICAgIC8vIEhlbmNlLCB0byBnZXQgdGhhdCBmb3JtLCB3ZSBwZXJmb3JtIGJvdGggbG93ZXItIGFuZCB1cHBlcmNhc2UuXG4gICAgICAvLyBVcHBlciBjYXNlIG1ha2VzIHN1cmUga2V5cyB3aWxsIG5vdCBpbnRlcmFjdCB3aXRoIGRlZmF1bHQgcHJvdG90eXBhbFxuICAgICAgLy8gbWV0aG9kczogbm8gbWV0aG9kIGlzIHVwcGVyY2FzZS5cbiAgICAgIC50b0xvd2VyQ2FzZSgpXG4gICAgICAudG9VcHBlckNhc2UoKVxuICApXG59XG4iXSwibmFtZXMiOlsidmFsdWVzIiwibm9ybWFsaXplSWRlbnRpZmllciIsInZhbHVlIiwicmVwbGFjZSIsInNwYWNlIiwidG9Mb3dlckNhc2UiLCJ0b1VwcGVyQ2FzZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/.pnpm/micromark-util-normalize-identifier@1.0.0/node_modules/micromark-util-normalize-identifier/dev/index.js\n");
+
+/***/ })
+
+};
+;

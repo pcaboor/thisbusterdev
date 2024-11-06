@@ -6,17 +6,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/(marketing)/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(marketing)/layout.js"
-    ],
-    "/(marketing)/[...slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(marketing)/[...slug]/page.css",
-      "static/chunks/app/(marketing)/[...slug]/page.js"
-    ],
     "/(docs)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -33,6 +22,22 @@
       "static/css/app/(docs)/docs/[[...slug]]/page.css",
       "static/chunks/app/(docs)/docs/[[...slug]]/page.js"
     ],
+    "/(marketing)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(marketing)/layout.js"
+    ],
+    "/(marketing)/[...slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(marketing)/[...slug]/page.css",
+      "static/chunks/app/(marketing)/[...slug]/page.js"
+    ],
+    "/(marketing)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(marketing)/page.js"
+    ],
     "/(dashboard)/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -47,6 +52,52 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/dashboard/loading.js"
+    ],
+    "/(dashboard)/dashboard/products/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/dashboard/products/page.js"
+    ],
+    "/(editor)/editor/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(editor)/editor/layout.js"
+    ],
+    "/(editor)/editor/[postId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(editor)/editor/[postId]/page.css",
+      "static/chunks/app/(editor)/editor/[postId]/page.js"
+    ],
+    "/(editor)/editor/[postId]/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(editor)/editor/[postId]/loading.js"
+    ],
+    "/(editor)/editor/[postId]/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(editor)/editor/[postId]/not-found.js"
+    ],
+    "/(marketing)/products/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(marketing)/products/page.js"
+    ],
+    "/(dashboard)/dashboard/billing/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/dashboard/billing/page.js"
+    ],
+    "/(dashboard)/dashboard/billing/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/dashboard/billing/loading.js"
+    ],
+    "/(dashboard)/dashboard/marketplace/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/dashboard/marketplace/page.js"
     ]
   }
 }

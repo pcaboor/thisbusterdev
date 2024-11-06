@@ -38,9 +38,9 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <DashboardBlock1 />
+      {/* <DashboardBlock1 /> */}
       <DashboardShell>
-        <DashboardHeader heading="Posts" text="Create and manage posts.">
+        <DashboardHeader heading="API" text="Create and manage api.">
           <PostCreateButton />
 
         </DashboardHeader>
@@ -54,9 +54,9 @@ export default async function DashboardPage() {
           ) : (
             <EmptyPlaceholder>
               <EmptyPlaceholder.Icon name="post" />
-              <EmptyPlaceholder.Title>No posts created</EmptyPlaceholder.Title>
+              <EmptyPlaceholder.Title>No api created</EmptyPlaceholder.Title>
               <EmptyPlaceholder.Description>
-                You don&apos;t have any posts yet. Start creating content.
+                You don&apos;t have any api yet. Explore the market place.
               </EmptyPlaceholder.Description>
               <PostCreateButton variant="outline" />
             </EmptyPlaceholder>

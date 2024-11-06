@@ -29,6 +29,7 @@ import {
   Key,
   X,
   Code,
+  PackageOpen,
 
   type Icon as LucideIcon,
 
@@ -64,6 +65,7 @@ export const Icons = {
   handMetal: HandMetal,
   wallet: Wallet,
   laptop: Laptop,
+  marketPlace: PackageOpen,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

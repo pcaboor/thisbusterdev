@@ -1,0 +1,100 @@
+---
+title: API in Python with Flask
+description: Bienvenue dans ce cours sur les API.
+---
+
+<div className="flex items-center gap-2">
+  <h1 className="text-2xl font-bold mr-2">Create an API in python</h1>
+  <Badge variant="blue">
+    Tutorial
+  </Badge>
+    <Badge variant="pink">
+    Basic
+  </Badge>
+</div>
+
+
+## Install Python and create a virtual environment
+
+```sh
+python -m venv env
+```
+
+### Activate the environment and install Flask
+
+```sh
+source env/bin/activate      # Linux/MacOS
+env\Scripts\activate         # Windows
+pip install Flask
+```
+
+### Basic API code in python
+
+```py
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+# Fake data
+articles = [{"id": 1, "titre": "Python API", "contenu": "Introduction à Flask"}]
+
+# Routes
+@app.route('/articles', methods=['GET'])
+def get_articles():
+    return jsonify(articles)
+
+@app.route('/articles', methods=['POST'])
+def add_article():
+    new_article = request.get_json()
+    articles.append(new_article)
+    return jsonify(new_article), 201
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+
+
+<div className="grid sm:grid-cols-2 gap-4 mt-6">
+
+<Card href="/docs/api/create-api/nodejs">
+
+### API in NodeJs 
+
+Build API with NodeJs
+ 
+</Card>
+
+<Card href="/docs/api/create-api/php">
+
+### API in PHP
+
+The marketing site with landing pages.
+
+</Card>
+
+<Card href="/docs/api/create-api/golang">
+
+### API in Golang
+
+The dashboard with auth and subscriptions.
+
+</Card>
+
+<Card href="/docs/api/create-api/">
+
+### API in Python
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+<Card href="/docs/api/create-api/typescript">
+
+### API in TypeScript
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+</div>

@@ -61,6 +61,7 @@ model User {
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+  ApiKey                 ApiKey[]
 
   @@map(name: "users")
 }
@@ -86,4 +87,54 @@ model Post {
   author User @relation(fields: [authorId], references: [id])
 
   @@map(name: "posts")
+}
+
+model Product {
+  id             String   @id @default(cuid())
+  name           String
+  description    String?
+  price          Float
+  currency       String   @default("USD")
+  active         Boolean  @default(true)
+  requestLimit   Int // Limite de requêtes mensuelles
+  bandwidthLimit Int // Limite de bande passante mensuelle en Mo
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  stripeProductId String? @unique
+  stripePriceId   String? @unique
+
+  apiUsages ApiUsage[]
+
+  @@map("products")
+}
+
+model ApiKey {
+  id        String   @id @default(cuid())
+  userId    String // ID de l'utilisateur propriétaire
+  key       String   @unique // Clé API unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  revoked   Boolean  @default(false) // Clé active ou révoquée
+
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ApiUsage ApiUsage[]
+
+  @@map("api_keys")
+}
+
+model ApiUsage {
+  id           String   @id @default(cuid())
+  apiKeyId     String // ID de la clé API utilisée
+  productId    String // ID du produit consommé
+  requestCount Int      @default(0) // Nombre de requêtes utilisées
+  bandwidth    Int      @default(0) // Bande passante utilisée en Mo
+  month        DateTime @default(now()) // Mois de consommation
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  apiKey  ApiKey  @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([apiKeyId, month]) // Un enregistrement par mois par clé API
+  @@map("api_usages")
 }

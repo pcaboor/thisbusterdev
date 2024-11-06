@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { MdxCard } from "@/components/mdx-card"
 import { Badge } from "./ui/badge"
+import { Tabs } from "./ui/tabs"
 
 const components = {
   h1: ({ className, ...props }) => (
@@ -151,6 +152,7 @@ const components = {
   Badge,
   Image,
   Callout,
+  Tabs,
   Card: MdxCard,
 }
 

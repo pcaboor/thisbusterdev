@@ -1,0 +1,96 @@
+---
+title: API in NodeJs with Express
+description: Bienvenue dans ce cours sur les API.
+---
+
+<div className="flex items-center gap-2">
+  <h1 className="text-2xl font-bold mr-2">Create an API in NodeJs</h1>
+  <Badge variant="blue">
+    Tutorial
+  </Badge>
+    <Badge variant="pink">
+    Basic
+  </Badge>
+</div>
+
+
+## Install Express
+
+```sh
+mkdir api-node
+cd api-node 
+npm init -y 
+npm install express
+```
+
+### Basic API code in NodeJs
+
+```js
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+let articles = [{ id: 1, title: 'Node API', content: 'Introduction à Express' }];
+
+app.get('/articles', (req, res) => {
+    res.json(articles);
+});
+
+app.post('/articles', (req, res) => {
+    const newArticle = req.body;
+    articles.push(newArticle);
+    res.status(201).json(newArticle);
+});
+
+app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
+});
+
+```
+
+
+
+<div className="grid sm:grid-cols-2 gap-4 mt-6">
+
+<Card href="/docs/api/create-api/nodejs">
+
+### API in NodeJs 
+
+Build API with NodeJs
+ 
+</Card>
+
+<Card href="/docs/api/create-api/php">
+
+### API in PHP
+
+The marketing site with landing pages.
+
+</Card>
+
+<Card href="/docs/api/create-api/golang">
+
+### API in Golang
+
+The dashboard with auth and subscriptions.
+
+</Card>
+
+<Card href="/docs/api/create-api/">
+
+### API in Python
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+<Card href="/docs/api/create-api/typescript">
+
+### API in TypeScript
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+</div>

@@ -127,21 +127,10 @@ const DashboardBlock1 = () => {
         <section className="pb-10">
             {/*className="container" */}
             <div >
-                <div className="flex flex-col justify-between md:mb-14 md:flex-row md:items-end ">
+                <div className="flex flex-col justify-between md:mb-6 md:flex-row md:items-end ">
                     <div>
-                        <p className="mb-6 text-xs font-medium uppercase tracking-wider">
-                            Tag Line
-                        </p>
                         <h2 className="bounce mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6">Hello</h2>
                         {/*<ScrollingMultilingualText texts={messages} interval={3000} /> */}
-
-                        <a
-                            href="#"
-                            className="group flex items-center text-xs font-medium md:text-base lg:text-m"
-                        >
-                            Book a demo{' '}
-                            <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-                        </a>
                     </div>
                     <div className="flex shrink-0 items-center justify-center gap-2">
                         <Button

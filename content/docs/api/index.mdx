@@ -2,13 +2,6 @@
 title: API
 description: Bienvenue dans ce cours sur les API.
 ---
-<Callout 
-  customTextColor="text-[#ff990a] text-sm"
-  borderWidth="1px"
->
-
-Complete this course and earn ***10K free requests*** from our API :)
-</Callout>
 
 <div className="flex items-center gap-2">
   <h1 className="text-2xl font-bold mr-2">What is an API ?</h1>
@@ -70,6 +63,103 @@ APIs use requests to request or send data. Here are some common request types:
 - <span style={{ color: '#00cfb7' }}>`POST`</span> : Sends data to create something new (e.g., creating a new user account).
 - <span style={{ color: '#ff990a' }}>`PUT`</span> : Modifies existing data (e.g., updating a user's profile).
 - <span style={{ color: '#fc0135' }}>`DELETE`</span> : Deletes data (e.g., deleting a user account).
+
+
+## Why are APIs useful?
+
+`Efficiency` : APIs allow you to use features that have already been created and optimized.
+
+`Time saving` : By using an API, developers can quickly integrate new features without having to recreate everything.
+
+`Interoperability` : APIs allow software from different publishers to communicate and work together.
+
+## Security and Authorization in APIs
+
+APIs use methods to ensure that only authorized people or applications can access them. Here are some common security mechanisms:
+
+`API Key` : An API key is a unique code that identifies and authorizes the user. It is like a password to access the API services.
+
+`OAuth` : This is a security protocol that allows one application to access resources of another application (e.g., allowing an application to access your Facebook profile to log in) without sharing your password.
+
+## The Importance of APIs in Modern Technology
+
+`APIs` are essential in today’s technology world. They allow applications, services, and devices to communicate and work together. 
+
+Without `APIs`, applications would be more isolated and less efficient. Whether it’s to retrieve data, create new features, or automate processes, 
+
+`APIs` play a fundamental role in facilitating and accelerating the development of modern technology.
+
+`Here is a simple example of an API` : 
+
+Illustrated in several languages ​​to create, read, update and delete data. 
+
+This example simulates a "task" management system (or "to-do list"), with the main operations `(CRUD: Create, Read, Update, Delete)`.
+
+### API Structure
+
+```js
+const express = require('express');
+const app = express();
+app.use(express.json());
+```
+
+```js
+let tasks = [];
+```
+
+
+`GET` /tasks: Retrieves the list of tasks.
+
+```js
+// GET /tasks
+app.get('/tasks', (req, res) => {
+  res.json(tasks);
+});
+```
+`POST` /tasks: Creates a new task.
+
+```js
+// POST /tasks
+app.post('/tasks', (req, res) => {
+  const task = { id: tasks.length + 1, text: req.body.text };
+  tasks.push(task);
+  res.status(201).json(task);
+});
+```
+
+`PUT` /tasks/ : Updates an existing task.
+```js
+// PUT /tasks/:id
+app.put('/tasks/:id', (req, res) => {
+  const task = tasks.find(t => t.id == req.params.id);
+  if (task) {
+    task.text = req.body.text;
+    res.json(task);
+  } else {
+    res.status(404).send('Task not found');
+  }
+});
+```
+
+`DELETE` /tasks/ : Deletes an existing task.
+
+```js
+// DELETE /tasks/:id
+app.delete('/tasks/:id', (req, res) => {
+  const index = tasks.findIndex(t => t.id == req.params.id);
+  if (index !== -1) {
+    tasks.splice(index, 1);
+    res.sendStatus(204);
+  } else {
+    res.status(404).send('task not found');
+  }
+});
+```
+```js
+app.listen(3000, () => {
+  console.log('Server started on http://localhost:3000');
+});
+```
 
 <div className="grid sm:grid-cols-2 gap-4 mt-6">
 

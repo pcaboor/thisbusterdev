@@ -3,10 +3,12 @@
   counter-reset: line;
   box-decoration-break: clone;
 }
+
 [data-rehype-pretty-code-fragment] .line {
   @apply px-4 py-1;
 }
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+
+[data-rehype-pretty-code-fragment] [data-line-numbers]>.line::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -15,18 +17,50 @@
   text-align: right;
   color: gray;
 }
+
 [data-rehype-pretty-code-fragment] .line--highlighted {
   @apply bg-slate-300 bg-opacity-10;
 }
+
 [data-rehype-pretty-code-fragment] .line-highlighted span {
   @apply relative;
 }
+
 [data-rehype-pretty-code-fragment] .word--highlighted {
   @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
 }
+
 [data-rehype-pretty-code-title] {
   @apply mt-4 py-2 px-4 text-sm font-medium;
 }
-[data-rehype-pretty-code-title] + pre {
+
+[data-rehype-pretty-code-title]+pre {
   @apply mt-0;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  /* Espace pour les numéros de ligne et la marge */
+  position: relative;
+}
+
+[data-rehype-pretty-code-fragment] .line::before {
+  content: counter(line);
+  /* Affiche le numéro de ligne */
+  counter-increment: line;
+  position: absolute;
+  left: 0.75rem;
+  /* Positionnement du numéro à gauche */
+  margin-right: 1rem;
+  /* Ajoute la marge à droite du numéro */
+  color: gray;
+  /* Couleur du numéro de ligne */
+  width: 1.5rem;
+  text-align: right;
+  font-size: 0.875rem;
+  /* Taille de police pour les numéros */
+  user-select: none;
+  /* Évite la sélection des numéros */
 }

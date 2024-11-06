@@ -1,0 +1,118 @@
+---
+title: API in Golang with Gin
+description: Bienvenue dans ce cours sur les API.
+---
+
+<div className="flex items-center gap-2">
+  <h1 className="text-2xl font-bold mr-2">Create an API in PHP</h1>
+  <Badge variant="blue">
+    Tutorial
+  </Badge>
+    <Badge variant="pink">
+    Basic
+  </Badge>
+</div>
+
+<Callout 
+  customTextColor="text-blue-500 text-sm"
+  customBorderColor="border-blue-500"
+  borderWidth="1px"
+>
+
+Before start, make sure you have [Composer](https://getcomposer.org/download/) install.
+
+</Callout>
+
+## Install Gin
+
+```sh
+mkdir api-go
+cd api-go
+go mod init api-go
+go get -u github.com/gin-gonic/gin
+```
+
+### Basic API code in Golang
+
+```go
+package main
+
+import (
+    "github.com/gin-gonic/gin"
+    "net/http"
+)
+
+type Article struct {
+    ID      int    `json:"id"`
+    Title   string `json:"title"`
+    Content string `json:"content"`
+}
+
+var articles = []Article{
+    {ID: 1, Title: "Go API", Content: "Introduction à Gin"},
+}
+
+func main() {
+    r := gin.Default()
+
+    r.GET("/articles", func(c *gin.Context) {
+        c.JSON(http.StatusOK, articles)
+    })
+
+    r.POST("/articles", func(c *gin.Context) {
+        var newArticle Article
+        if err := c.ShouldBindJSON(&newArticle); err == nil {
+            articles = append(articles, newArticle)
+            c.JSON(http.StatusCreated, newArticle)
+        } else {
+            c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        }
+    })
+
+    r.Run(":8080")
+}
+```
+
+<div className="grid sm:grid-cols-2 gap-4 mt-6">
+
+<Card href="/docs/api/create-api/nodejs">
+
+### API in NodeJs 
+
+Build API with NodeJs
+ 
+</Card>
+
+<Card href="/docs/api/create-api/php">
+
+### API in PHP
+
+The marketing site with landing pages.
+
+</Card>
+
+<Card href="/docs/api/create-api/golang">
+
+### API in Golang
+
+The dashboard with auth and subscriptions.
+
+</Card>
+
+<Card href="/docs/api/create-api/">
+
+### API in Python
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+<Card href="/docs/api/create-api/typescript">
+
+### API in TypeScript
+
+The blog built using Contentlayer and MDX.
+
+</Card>
+
+</div>

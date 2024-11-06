@@ -9,6 +9,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
+import { DocsSearch } from "./search"
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -43,6 +44,7 @@ export function MainNav({ items, children }: MainNavProps) {
             >
               {item.title}
             </Link>
+
           ))}
         </nav>
       ) : null}

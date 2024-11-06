@@ -7,10 +7,6 @@ export const dashboardConfig: DashboardConfig = {
       href: "/docs",
     },
     {
-      title: "Market Place",
-      href: "/marketing",
-    },
-    {
       title: "Support",
       href: "/support",
       disabled: true,
@@ -31,6 +27,11 @@ export const dashboardConfig: DashboardConfig = {
       title: "API Token",
       href: "/dashboard/api/token",
       icon: "key",
+    },
+    {
+      title: " Market Place",
+      href: "/dashboard/marketplace",
+      icon: "marketPlace",
     },
     {
       title: "Storage",
