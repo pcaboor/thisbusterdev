@@ -1,216 +1,158 @@
 'use client';
 
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
-import { Button } from '../../components/ui/button';
-import type { CarouselApi } from '../../components/ui/carousel';
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-} from '../../components/ui/carousel';
-import React from 'react';
-import ScrollingMultilingualText from './scrolling_text';
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination";
+import React, { useEffect, useState } from "react";
+import { ArrowRight, BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign } from "lucide-react"; // Importez les icônes nécessaires
 
-const data = [
-    {
-        id: 'item-1',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://i.pinimg.com/564x/db/16/45/db1645cc1ed95625a5dff41ee9a0f164.jpg',
-    },
-    {
-        id: 'item-2',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://i.pinimg.com/564x/59/4f/11/594f11dbf415baa52c82a80c1b21fc34.jpg',
-    },
-    {
-        id: 'item-3',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://i.pinimg.com/564x/4e/ff/66/4eff66d1e7fa56ba26d4c87b65cdd1ec.jpg',
-    },
-    {
-        id: 'item-4',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://i.pinimg.com/564x/95/d5/0d/95d50dd7b1686da8c38396095ec5c96d.jpg',
-    },
-    {
-        id: 'item-5',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg',
-    },
-    {
-        id: 'item-6',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg',
-    },
-    {
-        id: 'item-7',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg',
-    },
-    {
-        id: 'item-8',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg',
-    },
-    {
-        id: 'item-9',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg',
-    },
-    {
-        id: 'item-10',
-        title: 'Duis sem sem, gravida vel porttitor eu, volutpat ut arcu',
-        summary:
-            'Pellentesque eget quam ligula. Sed felis ante, consequat nec ultrices ut, ornare quis metus. Vivamus sit amet tortor vel enim sollicitudin hendrerit.',
-        href: '#',
-        image: 'https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg',
-    },
-];
+interface Product {
+    id: string;
+    name: string;
+    description: string;
+    image: string;
+    category: string;
+    link: string;
+}
 
-const messages = {
-    en: 'Welcome',
-    fr: 'Bienvenue',
-    es: 'おはよう',
-    de: 'Willkommen',
-    it: 'Benvenuto',
+const categoryIconMap = {
+    "Analytics": { icon: <BarChart2 />, color: "text-blue-500" },
+    "Security": { icon: <Shield />, color: "text-red-500" },
+    "Messaging": { icon: <MessageCircle />, color: "text-green-500" },
+    "E-commerce": { icon: <ShoppingCart />, color: "text-purple-500" },
+    "Finance": { icon: <DollarSign />, color: "text-yellow-500" },
 };
 
 
-const DashboardBlock1 = () => {
-    const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-    const [canScrollPrev, setCanScrollPrev] = useState(false);
-    const [canScrollNext, setCanScrollNext] = useState(false);
-    useEffect(() => {
-        if (!carouselApi) {
-            return;
+const ProductFeature = () => {
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+    const [currentPage, setCurrentPage] = useState<number>(1); // Page actuelle
+    const [totalProducts, setTotalProducts] = useState<number>(0); // Nombre total de produits
+    const [totalPages, setTotalPages] = useState<number>(0); // Nombre total de pages
+
+    const productsPerPage = 9; // Nombre de produits par page
+
+    // Fonction pour récupérer les produits depuis l'API
+    const fetchProducts = async (page: number) => {
+        try {
+            const response = await fetch(`/api/products?page=${page}&limit=${productsPerPage}`); // Passer les paramètres de pagination à l'API
+            if (!response.ok) {
+                throw new Error("Failed to fetch products");
+            }
+            const data = await response.json();
+            setProducts(data.products); // Supposons que votre API renvoie un objet avec un tableau de produits et un total
+            setTotalProducts(data.total); // Nombre total de produits disponible
+            setTotalPages(data.totalPages); // Nombre total de pages
+            setLoading(false);
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
         }
-        const updateSelection = () => {
-            setCanScrollPrev(carouselApi.canScrollPrev());
-            setCanScrollNext(carouselApi.canScrollNext());
-        };
-        updateSelection();
-        carouselApi.on('select', updateSelection);
-        return () => {
-            carouselApi.off('select', updateSelection);
-        };
-    }, [carouselApi]);
+    };
+
+    // Charger les produits lors du changement de page
+    useEffect(() => {
+        fetchProducts(currentPage);
+    }, [currentPage]);
+
+    // Gérer les états de chargement et d'erreur
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
-        <section className="pb-10">
-            {/*className="container" */}
-            <div >
-                <div className="flex flex-col justify-between md:mb-6 md:flex-row md:items-end ">
-                    <div>
-                        <h2 className="bounce mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6">Hello</h2>
-                        {/*<ScrollingMultilingualText texts={messages} interval={3000} /> */}
-                    </div>
-                    <div className="flex shrink-0 items-center justify-center gap-2">
-                        <Button
-                            size="icon"
-                            variant="outline"
-                            onClick={() => {
-                                carouselApi?.scrollPrev();
-                            }}
-                            disabled={!canScrollPrev}
-                            className="disabled:pointer-events-auto"
-                        >
-                            <ArrowLeft className="size-5" />
-                        </Button>
-                        <Button
-                            size="icon"
-                            variant="outline"
-                            onClick={() => {
-                                carouselApi?.scrollNext();
-                            }}
-                            disabled={!canScrollNext}
-                            className="disabled:pointer-events-auto"
-                        >
-                            <ArrowRight className="size-5" />
-                        </Button>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full">
-                <Carousel
-                    setApi={setCarouselApi}
-                    opts={{
-                        breakpoints: {
-                            '(max-width: 768px)': {
-                                dragFree: true,
-                            },
-                        },
-                    }}
-                >
-                    {/* className="ml-[calc(theme(container.padding)-20px)] mr-[calc(theme(container.padding))] 2xl:ml-[calc(50vw-700px+theme(container.padding)-20px)] 2xl:mr-[calc(50vw-700px+theme(container.padding))]" */}
-                    <CarouselContent>
-                        {data.map((item) => (
-                            <CarouselItem
-                                key={item.id}
-                                className="pl-[20px] md:max-w-[152px]"
-                            >
-                                <a
-                                    href={item.href}
-                                    className="group flex flex-col justify-between"
-                                >
-                                    <div>
-                                        <div className="flex aspect-[3/2] text-clip rounded-xl">
-                                            <div className="flex-1">
-                                                <div className="relative size-full origin-bottom transition duration-300 group-hover:scale-105">
-                                                    <img
-                                                        src={item.image}
-                                                        alt={item.title}
-                                                        className="size-full object-cover object-center"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="mb-2 line-clamp-3 break-words pt-4 text-xs font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
-                                        {item.title}
-                                    </div>
-                                    <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-m lg:mb-9">
-                                        {item.summary}
-                                    </div>
-                                    <div className="flex items-center text-sm">
-                                        Read more{' '}
-                                        <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                                    </div>
+        <section className="relative py-4 before:absolute before:inset-0 before:bg-primary/10 before:[mask-image:url(/images/block/waves.svg)] before:[mask-repeat:repeat] before:[mask-size:_64px_32px]">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-background"></div>
+            <div className="container relative">
+                <h2 className="mb-8 max-w-screen-sm text-balance text-2xl font-semibold lg:text-4xl">
+                    Explore our Products
+                </h2>
+
+                <div className="z-30 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {products.map((product) => {
+                        // Récupérer l'icône et la couleur en fonction de la catégorie
+                        const { icon, color } = categoryIconMap[product.category] || {};
+                        return (
+                            <div key={product.id} className="flex flex-col gap-6 rounded-lg border p-6">
+                                {/* Icône et couleur de catégorie */}
+                                <div className={`text-3xl ${color}`}>
+                                    {icon}
+                                </div>
+                                <h3 className="mt-4 text-base font-medium">{product.name}</h3>
+                                <h6 className="mb-2 text-base font-bold">{product.category}</h6>
+                                <p className="text-sm text-muted-foreground">{product.description}</p>
+                                <a href={product.link} className="flex items-center gap-2 text-sm font-medium">
+                                    Learn more <ArrowRight className="w-4" />
                                 </a>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </Carousel>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {/* Pagination */}
+                <div className="mt-8 flex justify-center">
+                    <Pagination>
+                        <PaginationContent>
+                            <PaginationItem>
+                                <PaginationPrevious
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        if (currentPage > 1) setCurrentPage(currentPage - 1);
+                                    }}
+                                />
+                            </PaginationItem>
+
+                            {/* Page Number Links */}
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <PaginationItem key={index}>
+                                    <PaginationLink
+                                        href="#"
+                                        isActive={currentPage === index + 1}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setCurrentPage(index + 1);
+                                        }}
+                                    >
+                                        {index + 1}
+                                    </PaginationLink>
+                                </PaginationItem>
+                            ))}
+
+                            {/* Pagination Ellipsis */}
+                            {totalPages > 5 && currentPage < totalPages - 1 && (
+                                <PaginationItem>
+                                    <PaginationEllipsis />
+                                </PaginationItem>
+                            )}
+
+                            <PaginationItem>
+                                <PaginationNext
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+                                    }}
+                                />
+                            </PaginationItem>
+                        </PaginationContent>
+                    </Pagination>
+                </div>
             </div>
         </section>
     );
 };
 
-export default DashboardBlock1;
+export default ProductFeature;

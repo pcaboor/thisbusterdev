@@ -1,12 +1,8 @@
 {
-  "/api/posts/route": "app/api/posts/route.js",
-  "/api/posts/[postId]/route": "app/api/posts/[postId]/route.js",
+  "/api/products/route": "app/api/products/route.js",
+  "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js",
+  "/(marketing)/[...slug]/page": "app/(marketing)/[...slug]/page.js",
   "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
   "/(dashboard)/dashboard/products/page": "app/(dashboard)/dashboard/products/page.js",
-  "/(editor)/editor/[postId]/page": "app/(editor)/editor/[postId]/page.js",
-  "/(marketing)/[...slug]/page": "app/(marketing)/[...slug]/page.js",
-  "/(marketing)/products/page": "app/(marketing)/products/page.js",
-  "/(dashboard)/dashboard/billing/page": "app/(dashboard)/dashboard/billing/page.js",
-  "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js",
-  "/(docs)/docs/[[...slug]]/page": "app/(docs)/docs/[[...slug]]/page.js"
+  "/(dashboard)/dashboard/settings/page": "app/(dashboard)/dashboard/settings/page.js"
 }

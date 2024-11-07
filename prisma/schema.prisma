@@ -98,6 +98,7 @@ model Product {
   active         Boolean  @default(true)
   requestLimit   Int // Limite de requêtes mensuelles
   bandwidthLimit Int // Limite de bande passante mensuelle en Mo
+  category       String // Catégorie du produit
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
 
