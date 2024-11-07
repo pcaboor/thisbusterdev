@@ -17,6 +17,11 @@ async function main() {
         // Sélectionner une catégorie aléatoire
         const randomCategory = categories[Math.floor(Math.random() * categories.length)];
 
+        // Sélectionner un type, un language et une license aléatoires
+        const types = ["REST API", "GraphQL API", "Webhook"];
+        const languages = ["JavaScript", "Python", "Ruby", "Go", "Java"];
+        const licenses = ["MIT", "Apache 2.0", "GPL v3", "BSD 3-Clause"];
+
         return {
             name: `API Product ${i + 1}`,
             description: `This is a description for API Product ${i + 1}. It provides excellent functionality and meets all API standards.`,
@@ -28,6 +33,10 @@ async function main() {
             stripeProductId: `stripe_prod_${i + 1}`,
             stripePriceId: `stripe_price_${i + 1}`,
             category: randomCategory.name, // Ajoute la catégorie
+            type: types[Math.floor(Math.random() * types.length)], // Ajoute le type
+            language: languages[Math.floor(Math.random() * languages.length)], // Ajoute le language
+            license: licenses[Math.floor(Math.random() * licenses.length)], // Ajoute la license
+            likecount: Math.floor(Math.random() * 1000).toString() // Convertir le nombre en chaîne de caractères
         };
     });
 
@@ -35,7 +44,7 @@ async function main() {
         data: fakeProducts,
     });
 
-    console.log('20 fake API products with categories and icons have been created for testing.');
+    console.log('20 fake API products with categories, types, languages, licenses and likecount have been created for testing.');
 }
 
 main()

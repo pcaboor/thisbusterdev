@@ -8,9 +8,12 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from "@/components/ui/pagination";
-import React, { useEffect, useState } from "react";
-import { ArrowRight, BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign } from "lucide-react"; // Importez les icônes nécessaires
+} from '@/components/ui/pagination';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign, BookOpen, Boxes, Code2, Heart } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Button } from '../ui/button';
+import { format, formatDistanceStrict, formatDistanceToNow } from 'date-fns';
 
 interface Product {
     id: string;
@@ -19,38 +22,50 @@ interface Product {
     image: string;
     category: string;
     link: string;
+    type: string,
+    language: string,
+    license: string,
+    likecount: string,
+    createdAt: string;
 }
 
 const categoryIconMap = {
-    "Analytics": { icon: <BarChart2 />, color: "text-blue-500" },
-    "Security": { icon: <Shield />, color: "text-red-500" },
-    "Messaging": { icon: <MessageCircle />, color: "text-green-500" },
-    "E-commerce": { icon: <ShoppingCart />, color: "text-purple-500" },
-    "Finance": { icon: <DollarSign />, color: "text-yellow-500" },
+    "Analytics": { icon: <BarChart2 />, color: 'text-blue-500' },
+    "Security": { icon: <Shield />, color: 'text-red-500' },
+    "Messaging": { icon: <MessageCircle />, color: 'text-green-500' },
+    'E-commerce': { icon: <ShoppingCart />, color: 'text-purple-500' },
+    "Finance": { icon: <DollarSign />, color: 'text-yellow-500' },
 };
-
 
 const ProductFeature = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [currentPage, setCurrentPage] = useState<number>(1); // Page actuelle
-    const [totalProducts, setTotalProducts] = useState<number>(0); // Nombre total de produits
-    const [totalPages, setTotalPages] = useState<number>(0); // Nombre total de pages
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalProducts, setTotalProducts] = useState<number>(0);
+    const [totalPages, setTotalPages] = useState<number>(0);
+    const router = useRouter();
 
-    const productsPerPage = 9; // Nombre de produits par page
+    const productsPerPage = 9;
 
-    // Fonction pour récupérer les produits depuis l'API
+    // Fonction mise à jour pour récupérer les produits depuis l'API
     const fetchProducts = async (page: number) => {
         try {
-            const response = await fetch(`/api/products?page=${page}&limit=${productsPerPage}`); // Passer les paramètres de pagination à l'API
+            const queryParams = new URLSearchParams({
+                page: page.toString(),
+                limit: productsPerPage.toString()
+            });
+
+            const response = await fetch(`/api/products/list?${queryParams}`); // Utilisation d'un nouvel endpoint "list"
+
             if (!response.ok) {
-                throw new Error("Failed to fetch products");
+                throw new Error('Failed to fetch products');
             }
+
             const data = await response.json();
-            setProducts(data.products); // Supposons que votre API renvoie un objet avec un tableau de produits et un total
-            setTotalProducts(data.total); // Nombre total de produits disponible
-            setTotalPages(data.totalPages); // Nombre total de pages
+            setProducts(data.products);
+            setTotalProducts(data.total);
+            setTotalPages(data.totalPages);
             setLoading(false);
         } catch (error) {
             setError(error.message);
@@ -58,12 +73,11 @@ const ProductFeature = () => {
         }
     };
 
-    // Charger les produits lors du changement de page
+
     useEffect(() => {
         fetchProducts(currentPage);
     }, [currentPage]);
 
-    // Gérer les états de chargement et d'erreur
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -79,29 +93,50 @@ const ProductFeature = () => {
                 <h2 className="mb-8 max-w-screen-sm text-balance text-2xl font-semibold lg:text-4xl">
                     Explore our Products
                 </h2>
-
                 <div className="z-30 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {products.map((product) => {
-                        // Récupérer l'icône et la couleur en fonction de la catégorie
-                        const { icon, color } = categoryIconMap[product.category] || {};
+                        const timeAgo = formatDistanceStrict(new Date(product.createdAt), new Date(), { addSuffix: true });
+                        // const { icon, color } = categoryIconMap[product.category] || {};
+
                         return (
-                            <div key={product.id} className="flex flex-col gap-6 rounded-lg border p-6">
-                                {/* Icône et couleur de catégorie */}
-                                <div className={`text-3xl ${color}`}>
-                                    {icon}
+                            <div
+                                key={product.id}
+                                className="flex flex-col gap-6 rounded-lg border p-6 cursor-pointer"
+                                onClick={() => router.push(`/dashboard/marketplace/${product.id}`)} // Ajout du slash initial pour le chemin
+                            >
+                                <div  >
+                                    {/* className={`text-3xl ${color}`}*/}
+                                    {/* {icon} */}
                                 </div>
                                 <h3 className="mt-4 text-base font-medium">{product.name}</h3>
-                                <h6 className="mb-2 text-base font-bold">{product.category}</h6>
+                                <p className="text-sm text-muted-foreground">{timeAgo}</p>
+                                <div className="flex flex-wrap gap-2 justify-start">
+                                    <Button variant={"outline"} size={"sm"}>
+                                        <Boxes className="flex-shrink-0 w-3 h-auto text-yellow-400" />
+                                        {product.category}
+                                    </Button>
+                                    <Button variant={"outline"} size={"sm"}>
+                                        <Code2 className="flex-shrink-0 w-3 h-auto text-blue-400" />
+                                        {product.language}
+                                    </Button>
+                                    <Button variant={"outline"} size={"sm"}>
+                                        <BookOpen className="flex-shrink-0 w-3 h-auto text-purple-400" />
+                                        {product.license}
+                                    </Button>
+                                    <Button variant={"outline"} size={"sm"}>
+                                        <Heart className="flex-shrink-0 w-3 h-auto text-red-500" />
+                                        {product.likecount}
+                                    </Button>
+                                </div>
                                 <p className="text-sm text-muted-foreground">{product.description}</p>
-                                <a href={product.link} className="flex items-center gap-2 text-sm font-medium">
+                                <div className="flex items-center gap-2 text-sm font-medium">
                                     Learn more <ArrowRight className="w-4" />
-                                </a>
+                                </div>
                             </div>
                         );
                     })}
                 </div>
 
-                {/* Pagination */}
                 <div className="mt-8 flex justify-center">
                     <Pagination>
                         <PaginationContent>
@@ -115,7 +150,6 @@ const ProductFeature = () => {
                                 />
                             </PaginationItem>
 
-                            {/* Page Number Links */}
                             {Array.from({ length: totalPages }, (_, index) => (
                                 <PaginationItem key={index}>
                                     <PaginationLink
@@ -131,7 +165,6 @@ const ProductFeature = () => {
                                 </PaginationItem>
                             ))}
 
-                            {/* Pagination Ellipsis */}
                             {totalPages > 5 && currentPage < totalPages - 1 && (
                                 <PaginationItem>
                                     <PaginationEllipsis />

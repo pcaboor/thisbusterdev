@@ -8,7 +8,6 @@ import { DashboardHeader } from "@/components/header"
 import { PostCreateButton } from "@/components/post-create-button"
 import { PostItem } from "@/components/post-item"
 import { DashboardShell } from "@/components/shell"
-import DashboardBlock1 from "@/components/blocks/dashboard_block1"
 
 export const metadata = {
   title: "Dashboard",
