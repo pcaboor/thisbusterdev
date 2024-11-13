@@ -36,7 +36,7 @@ async function main() {
             type: types[Math.floor(Math.random() * types.length)], // Ajoute le type
             language: languages[Math.floor(Math.random() * languages.length)], // Ajoute le language
             license: licenses[Math.floor(Math.random() * licenses.length)], // Ajoute la license
-            likecount: Math.floor(Math.random() * 1000).toString() // Convertir le nombre en chaîne de caractères
+            likecount: Math.floor(Math.random() * 1000) // Convertir le nombre en chaîne de caractères
         };
     });
 

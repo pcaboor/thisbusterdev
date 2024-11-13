@@ -6,11 +6,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/(dashboard)/dashboard/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/dashboard/page.js"
-    ],
     "/(dashboard)/dashboard/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -42,26 +37,26 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/dashboard/marketplace/[id]/page.js"
     ],
-    "/(docs)/layout": [
+    "/(dashboard)/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(docs)/layout.js"
+      "static/chunks/app/(dashboard)/dashboard/page.js"
     ],
-    "/(docs)/docs/layout": [
+    "/(dashboard)/dashboard/create-product/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(docs)/docs/layout.js"
+      "static/css/app/(dashboard)/dashboard/create-product/page.css",
+      "static/chunks/app/(dashboard)/dashboard/create-product/page.js"
     ],
-    "/(docs)/docs/[[...slug]]/page": [
+    "/(dashboard)/dashboard/billing/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/(docs)/docs/[[...slug]]/page.css",
-      "static/chunks/app/(docs)/docs/[[...slug]]/page.js"
+      "static/chunks/app/(dashboard)/dashboard/billing/page.js"
     ],
-    "/(marketing)/page": [
+    "/(dashboard)/dashboard/billing/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(marketing)/page.js"
+      "static/chunks/app/(dashboard)/dashboard/billing/loading.js"
     ]
   }
 }

@@ -2,11 +2,11 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { EmptyPlaceholder } from "../empty-placeholder";
 import { PostCreateButton } from "../post-create-button";
-import { Boxes, ArrowBigLeft, BookOpen, Briefcase, Code2, Codepen, Flower, Heart, Lightbulb, MountainSnow, Settings, TerminalSquare, GitPullRequest } from "lucide-react";
+import { Boxes, BookOpen, Code2, Heart, TerminalSquare, GitPullRequest } from "lucide-react";
 import { Button } from "../ui/button";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import formatDistanceStrict from "date-fns/formatDistanceStrict";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { MdPreview } from "md-editor-rt";
+import { useTheme } from "next-themes";
 
 
 interface Product {
@@ -20,15 +20,23 @@ interface Product {
     language: string,
     license: string,
     likecount: string,
-    createdAt: string
+    createdAt: string,
+    docs: string,
 }
 
 interface ProductDetailProps {
     params: { id: string };
 }
 
+
+
 const ProductDetails = ({ params }: ProductDetailProps) => {
 
+    const { theme } = useTheme();
+
+    const mdPreviewTheme = theme === "dark" || theme === "light" ? theme : undefined;
+
+    const [id] = useState('preview-only');
 
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
@@ -83,6 +91,8 @@ const ProductDetails = ({ params }: ProductDetailProps) => {
     }
     const timeAgo = formatDistanceStrict(new Date(product.createdAt), new Date(), { addSuffix: true });
 
+    console.log(product.docs);
+
     return (
         <section>
             <div className="flex w-full flex-col items-center pb-8  md:flex-row md:pb-10 lg:pb-16">
@@ -135,92 +145,10 @@ const ProductDetails = ({ params }: ProductDetailProps) => {
                             {product.likecount}
                         </Button>
                     </div>
+                    <MdPreview theme={mdPreviewTheme} language="en-US" modelValue={product.docs} editorId={id} className="text-s" />
 
-                    <h2>Docs</h2>
-                    <p>
-                        The king thought long and hard, and finally came up with{' '}
-                        <a href="#">a brilliant plan</a>: he would tax the jokes in the
-                        kingdom.
-                    </p>
-                    <blockquote>
-                        &ldquo;After all,&rdquo; he said, &ldquo;everyone enjoys a good
-                        joke, so it&apos;s only fair that they should pay for the
-                        privilege.&rdquo;
-                    </blockquote>
-                    <pre className="bg-secondary text-primary p-4 rounded-md overflow-x-auto">
-                        <code className="whitespace-pre language-python">
-                            {`const greeting: string = "Hello, world!";
-console.log(greeting);`}
-                        </code>
-                    </pre>
-
-                    <h3>The Joke Tax</h3>
-                    <p>
-                        The king&apos;s subjects were not amused. They grumbled and
-                        complained, but the king was firm:
-                    </p>
-                    <ul>
-                        <li>1st level of puns: 5 gold coins</li>
-                        <li>2nd level of jokes: 10 gold coins</li>
-                        <li>3rd level of one-liners : 20 gold coins</li>
-                    </ul>
-                    <p>
-                        As a result, people stopped telling jokes, and the kingdom fell into
-                        a gloom. But there was one person who refused to let the king&apos;s
-                        foolishness get him down: a court jester named Jokester.
-                    </p>
-                    <h3>Jokester&apos;s Revolt</h3>
-                    <p>
-                        Jokester began sneaking into the castle in the middle of the night
-                        and leaving jokes all over the place: under the king&apos;s pillow,
-                        in his soup, even in the royal toilet. The king was furious, but he
-                        couldn&apos;t seem to stop Jokester.
-                    </p>
-                    <p>
-                        And then, one day, the people of the kingdom discovered that the
-                        jokes left by Jokester were so funny that they couldn&apos;t help
-                        but laugh. And once they started laughing, they couldn&apos;t stop.
-                    </p>
-                    <h3>The People&apos;s Rebellion</h3>
-                    <p>
-                        The people of the kingdom, feeling uplifted by the laughter, started
-                        to tell jokes and puns again, and soon the entire kingdom was in on
-                        the joke.
-                    </p>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>King&apos;s Treasury</th>
-                                    <th>People&apos;s happiness</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="m-0 border-t border-l border-r  p-0 even:bg-muted">
-                                    <td className="pl-3">Empty</td>
-                                    <td >Overflowing</td>
-                                </tr>
-                                <tr className="m-0 border-t border-l border-r p-0 even:bg-muted">
-                                    <td className="pl-3">Modest</td>
-                                    <td>Satisfied</td>
-                                </tr>
-                                <tr className="m-0 border-t border-l border-b border-r p-0 even:bg-muted">
-                                    <td className="pl-3">Full</td>
-                                    <td>Ecstatic</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p>
-                        The king, seeing how much happier his subjects were, realized the
-                        error of his ways and repealed the joke tax. Jokester was declared a
-                        hero, and the kingdom lived happily ever after.
-                    </p>
-                    <p>
-                        The moral of the story is: never underestimate the power of a good
-                        laugh and always be careful of bad ideas.
-                    </p>
                 </article>
+
                 <aside className="mr-6 mb-8 w-full self-start pt-10 md:sticky md:ml-8 md:w-fit md:min-w-64 md:flex-1 lg:ml-10 lg:shrink-0 2xl:w-full">
                     <div className="">
                         <div className="hidden w-full md:mt-1 md:block">

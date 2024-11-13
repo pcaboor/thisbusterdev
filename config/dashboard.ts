@@ -34,6 +34,11 @@ export const dashboardConfig: DashboardConfig = {
       icon: "marketPlace",
     },
     {
+      title: "Create product",
+      href: "/dashboard/create-product",
+      icon: "penTool",
+    },
+    {
       title: "Storage",
       href: "/dashboard/storage",
       icon: "package",

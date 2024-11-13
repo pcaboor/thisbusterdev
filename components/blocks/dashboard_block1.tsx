@@ -10,10 +10,11 @@ import {
     PaginationPrevious,
 } from '@/components/ui/pagination';
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign, BookOpen, Boxes, Code2, Heart } from 'lucide-react';
+import { ArrowRight, BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign, BookOpen, Boxes, Code2, Heart, Terminal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Button } from '../ui/button';
 import { format, formatDistanceStrict, formatDistanceToNow } from 'date-fns';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 
 interface Product {
     id: string;
@@ -46,7 +47,7 @@ const ProductFeature = () => {
     const [totalPages, setTotalPages] = useState<number>(0);
     const router = useRouter();
 
-    const productsPerPage = 9;
+    const productsPerPage = 18;
 
     // Fonction mise à jour pour récupérer les produits depuis l'API
     const fetchProducts = async (page: number) => {
@@ -101,37 +102,29 @@ const ProductFeature = () => {
                         return (
                             <div
                                 key={product.id}
-                                className="flex flex-col gap-6 rounded-lg border p-6 cursor-pointer"
+                                className='cursor-pointer'
                                 onClick={() => router.push(`/dashboard/marketplace/${product.id}`)} // Ajout du slash initial pour le chemin
                             >
                                 <div  >
                                     {/* className={`text-3xl ${color}`}*/}
                                     {/* {icon} */}
                                 </div>
-                                <h3 className="mt-4 text-base font-medium">{product.name}</h3>
-                                <p className="text-sm text-muted-foreground">{timeAgo}</p>
-                                <div className="flex flex-wrap gap-2 justify-start">
-                                    <Button variant={"outline"} size={"sm"}>
+                                <Alert className='bg-muted'>
+
+                                    <div className="flex items-center gap-2 text-sm">
                                         <Boxes className="flex-shrink-0 w-3 h-auto text-yellow-400" />
-                                        {product.category}
-                                    </Button>
-                                    <Button variant={"outline"} size={"sm"}>
-                                        <Code2 className="flex-shrink-0 w-3 h-auto text-blue-400" />
-                                        {product.language}
-                                    </Button>
-                                    <Button variant={"outline"} size={"sm"}>
-                                        <BookOpen className="flex-shrink-0 w-3 h-auto text-purple-400" />
-                                        {product.license}
-                                    </Button>
-                                    <Button variant={"outline"} size={"sm"}>
-                                        <Heart className="flex-shrink-0 w-3 h-auto text-red-500" />
-                                        {product.likecount}
-                                    </Button>
-                                </div>
-                                <p className="text-sm text-muted-foreground">{product.description}</p>
-                                <div className="flex items-center gap-2 text-sm font-medium">
-                                    Learn more <ArrowRight className="w-4" />
-                                </div>
+                                        <AlertTitle className="truncate">{product.name}</AlertTitle>
+                                    </div>
+                                    <AlertDescription className="text-sm text-muted-foreground truncate">
+                                        {/* <span className="truncate max-w-xs">{product.description}</span> */}
+                                        <div className="flex flex-wrap gap-2 justify-start">
+                                            <Boxes className="flex-shrink-0 w-3 h-auto text-blue-400" />
+                                            {product.category}
+                                            <p className="text-xs text-muted-foreground">{timeAgo}</p>
+                                        </div>
+                                    </AlertDescription>
+                                </Alert>
+
                             </div>
                         );
                     })}

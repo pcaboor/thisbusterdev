@@ -4,7 +4,7 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Command,
+  PenTool,
   CreditCard,
   File,
   FileText,
@@ -65,6 +65,7 @@ export const Icons = {
   handMetal: HandMetal,
   wallet: Wallet,
   laptop: Laptop,
+  penTool: PenTool,
   marketPlace: PackageOpen,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
