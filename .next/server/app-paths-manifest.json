@@ -1,11 +1,7 @@
 {
   "/api/products/list/route": "app/api/products/list/route.js",
   "/api/search/route": "app/api/search/route.js",
-  "/api/products/[id]/route": "app/api/products/[id]/route.js",
-  "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js",
   "/(marketing)/[...slug]/page": "app/(marketing)/[...slug]/page.js",
-  "/(dashboard)/dashboard/marketplace/[id]/page": "app/(dashboard)/dashboard/marketplace/[id]/page.js",
-  "/(dashboard)/dashboard/search/page": "app/(dashboard)/dashboard/search/page.js",
-  "/(marketing)/page": "app/(marketing)/page.js",
-  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js"
+  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js"
 }
