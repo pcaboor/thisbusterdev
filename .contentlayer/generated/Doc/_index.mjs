@@ -3,15 +3,15 @@
 import docs__busterMdx from './docs__buster.mdx.json' assert { type: 'json' }
 import docs__inProgressMdx from './docs__in-progress.mdx.json' assert { type: 'json' }
 import docs__indexMdx from './docs__index.mdx.json' assert { type: 'json' }
-import docs__api__indexMdx from './docs__api__index.mdx.json' assert { type: 'json' }
 import docs__documentation__codeBlocksMdx from './docs__documentation__code-blocks.mdx.json' assert { type: 'json' }
 import docs__documentation__componentsMdx from './docs__documentation__components.mdx.json' assert { type: 'json' }
 import docs__documentation__indexMdx from './docs__documentation__index.mdx.json' assert { type: 'json' }
 import docs__documentation__styleGuideMdx from './docs__documentation__style-guide.mdx.json' assert { type: 'json' }
+import docs__api__indexMdx from './docs__api__index.mdx.json' assert { type: 'json' }
 import docs__api__createApi__golangMdx from './docs__api__create-api__golang.mdx.json' assert { type: 'json' }
 import docs__api__createApi__indexMdx from './docs__api__create-api__index.mdx.json' assert { type: 'json' }
 import docs__api__createApi__nodejsMdx from './docs__api__create-api__nodejs.mdx.json' assert { type: 'json' }
 import docs__api__createApi__phpMdx from './docs__api__create-api__php.mdx.json' assert { type: 'json' }
 import docs__api__createApi__typescriptMdx from './docs__api__create-api__typescript.mdx.json' assert { type: 'json' }
 
-export const allDocs = [docs__busterMdx, docs__inProgressMdx, docs__indexMdx, docs__api__indexMdx, docs__documentation__codeBlocksMdx, docs__documentation__componentsMdx, docs__documentation__indexMdx, docs__documentation__styleGuideMdx, docs__api__createApi__golangMdx, docs__api__createApi__indexMdx, docs__api__createApi__nodejsMdx, docs__api__createApi__phpMdx, docs__api__createApi__typescriptMdx]
+export const allDocs = [docs__busterMdx, docs__inProgressMdx, docs__indexMdx, docs__documentation__codeBlocksMdx, docs__documentation__componentsMdx, docs__documentation__indexMdx, docs__documentation__styleGuideMdx, docs__api__indexMdx, docs__api__createApi__golangMdx, docs__api__createApi__indexMdx, docs__api__createApi__nodejsMdx, docs__api__createApi__phpMdx, docs__api__createApi__typescriptMdx]

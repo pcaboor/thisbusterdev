@@ -1,10 +1,13 @@
 {
   "/api/products/list/route": "app/api/products/list/route.js",
   "/api/products/[id]/route": "app/api/products/[id]/route.js",
-  "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js",
+  "/api/search/route": "app/api/search/route.js",
   "/(marketing)/[...slug]/page": "app/(marketing)/[...slug]/page.js",
-  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(dashboard)/dashboard/search/page": "app/(dashboard)/dashboard/search/page.js",
+  "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js",
+  "/(dashboard)/dashboard/marketplace/[id]/page": "app/(dashboard)/dashboard/marketplace/[id]/page.js",
   "/(dashboard)/dashboard/create-product/page": "app/(dashboard)/dashboard/create-product/page.js",
-  "/(dashboard)/dashboard/billing/page": "app/(dashboard)/dashboard/billing/page.js",
-  "/(dashboard)/dashboard/marketplace/[id]/page": "app/(dashboard)/dashboard/marketplace/[id]/page.js"
+  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(docs)/docs/[[...slug]]/page": "app/(docs)/docs/[[...slug]]/page.js"
 }

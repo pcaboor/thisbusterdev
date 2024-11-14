@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import formatDistanceStrict from "date-fns/formatDistanceStrict";
 import { MdPreview } from "md-editor-rt";
 import { useTheme } from "next-themes";
+import DocsPreview from "../editor_markdown/docsPreview";
 
 
 interface Product {
@@ -31,12 +32,6 @@ interface ProductDetailProps {
 
 
 const ProductDetails = ({ params }: ProductDetailProps) => {
-
-    const { theme } = useTheme();
-
-    const mdPreviewTheme = theme === "dark" || theme === "light" ? theme : undefined;
-
-    const [id] = useState('preview-only');
 
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
@@ -145,7 +140,7 @@ const ProductDetails = ({ params }: ProductDetailProps) => {
                             {product.likecount}
                         </Button>
                     </div>
-                    <MdPreview theme={mdPreviewTheme} language="en-US" modelValue={product.docs} editorId={id} className="text-s" />
+                    <DocsPreview content={product.docs} />
 
                 </article>
 

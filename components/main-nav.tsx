@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
 import { DocsSearch } from "./search"
+import SearchInput from "./marketplace/searchInput"
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -28,6 +29,7 @@ export function MainNav({ items, children }: MainNavProps) {
           {siteConfig.name}
         </span>
       </Link>
+
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
           {items?.map((item, index) => (

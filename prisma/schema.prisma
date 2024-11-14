@@ -103,7 +103,7 @@ model Product {
   language        String // Dev language ex: JS, Python
   license         String // ex: MIT
   likecount       Int // Nombre de favoris
-  docs            Json?
+  docs            String?  @db.Text
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
   stripeProductId String?  @unique

@@ -11,6 +11,7 @@ import { getCurrentUser } from "@/lib/session"
 import { UserAvatar } from "@/components/user-avatar"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import SearchInput from "@/components/marketplace/searchInput"
 
 interface DocsLayoutProps {
   children: React.ReactNode

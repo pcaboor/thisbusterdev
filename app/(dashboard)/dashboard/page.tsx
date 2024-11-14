@@ -8,6 +8,7 @@ import { DashboardHeader } from "@/components/header"
 import { PostCreateButton } from "@/components/post-create-button"
 import { PostItem } from "@/components/post-item"
 import { DashboardShell } from "@/components/shell"
+import SearchInput from "@/components/marketplace/searchInput"
 
 export const metadata = {
   title: "Dashboard",
@@ -38,6 +39,7 @@ export default async function DashboardPage() {
   return (
     <div>
       {/* <DashboardBlock1 /> */}
+      <SearchInput />
       <DashboardShell>
         <DashboardHeader heading="API" text="Create and manage api.">
           <PostCreateButton />
@@ -49,6 +51,8 @@ export default async function DashboardPage() {
               {posts.map((post) => (
                 <PostItem key={post.id} post={post} />
               ))}
+
+
             </div>
           ) : (
             <EmptyPlaceholder>

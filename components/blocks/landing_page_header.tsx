@@ -14,6 +14,8 @@ import Link from "next/link";
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
+import MarketPlace from "@/app/(dashboard)/dashboard/marketplace/page";
+import MarketPlacePage from "@/app/(dashboard)/dashboard/marketplace/page";
 
 
 
@@ -41,6 +43,7 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                             Find the best API
                         </h1>
+
                         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mt-2">
                             Access to data
                         </h1>
@@ -121,9 +124,11 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                                         strokeLinecap="round"
                                     />
                                 </svg>
+
                             </div>
 
                             {/* End SVG Element */}
+
                         </div>
 
                         <div className="mt-10 sm:mt-20 flex flex-wrap gap-2 justify-center">
