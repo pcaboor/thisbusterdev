@@ -1,21 +1,14 @@
 'use client';
 
-import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from '@/components/ui/pagination';
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign, BookOpen, Boxes, Code2, Heart, Terminal } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '../ui/button';
-import { format, formatDistanceStrict, formatDistanceToNow } from 'date-fns';
-import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import { BarChart2, Shield, MessageCircle, ShoppingCart, DollarSign, User, Zap } from 'lucide-react';
 import SearchInput from '../marketplace/searchInput';
+import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import formatDistanceStrict from 'date-fns/formatDistanceStrict';
+import { VscCalendar, VscGitFetch } from "react-icons/vsc";
+import { HiCube } from "react-icons/hi2";
 
 interface Product {
     id: string;
@@ -24,19 +17,22 @@ interface Product {
     image: string;
     category: string;
     link: string;
-    type: string,
-    language: string,
-    license: string,
-    likecount: string,
+    type: string;
+    language: string;
+    license: string;
+    likecount: string;
     createdAt: string;
 }
 
 const categoryIconMap = {
-    "Analytics": { icon: <BarChart2 />, color: 'text-blue-500' },
-    "Security": { icon: <Shield />, color: 'text-red-500' },
-    "Messaging": { icon: <MessageCircle />, color: 'text-green-500' },
-    'E-commerce': { icon: <ShoppingCart />, color: 'text-purple-500' },
-    "Finance": { icon: <DollarSign />, color: 'text-yellow-500' },
+    "Free": { icon: <Zap size={16} />, color: 'text-green-500' },
+    "Analytics": { icon: <BarChart2 size={16} />, color: 'text-blue-500' },
+    "Security": { icon: <Shield size={16} />, color: 'text-red-500' },
+    "Messaging": { icon: <MessageCircle size={16} />, color: 'text-green-500' },
+    'E-commerce': { icon: <ShoppingCart size={16} />, color: 'text-purple-500' },
+    "Finance": { icon: <DollarSign size={16} />, color: 'text-yellow-500' },
+    "Education": { icon: <Shield size={16} />, color: 'text-purple-500' },
+    "Health": { icon: <Shield size={16} />, color: 'text-green-500' },
 };
 
 const ProductFeature = () => {
@@ -46,11 +42,12 @@ const ProductFeature = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalProducts, setTotalProducts] = useState<number>(0);
     const [totalPages, setTotalPages] = useState<number>(0);
+    const [sortOption, setSortOption] = useState('name');
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const router = useRouter();
 
     const productsPerPage = 18;
 
-    // Fonction mise à jour pour récupérer les produits depuis l'API
     const fetchProducts = async (page: number) => {
         try {
             const queryParams = new URLSearchParams({
@@ -58,8 +55,7 @@ const ProductFeature = () => {
                 limit: productsPerPage.toString()
             });
 
-            const response = await fetch(`/api/products/list?${queryParams}`); // Utilisation d'un nouvel endpoint "list"
-
+            const response = await fetch(`/api/products/list?${queryParams}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch products');
             }
@@ -75,6 +71,25 @@ const ProductFeature = () => {
         }
     };
 
+    const sortedProducts = [...products].sort((a, b) => {
+        const aHasTag = a.description.includes("use client") || a.type.includes("use client");
+        const bHasTag = b.description.includes("use client") || b.type.includes("use client");
+
+        if (aHasTag && !bHasTag) return -1;
+        if (!aHasTag && bHasTag) return 1;
+
+        if (sortOption === 'name') {
+            return a.name.localeCompare(b.name);
+        } else if (sortOption === 'date') {
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        }
+
+        return 0;
+    });
+
+    const filteredProducts = selectedCategory
+        ? sortedProducts.filter(product => product.category === selectedCategory)
+        : sortedProducts;
 
     useEffect(() => {
         fetchProducts(currentPage);
@@ -89,42 +104,93 @@ const ProductFeature = () => {
     }
 
     return (
-        <section className="relative min-h-screen before:absolute before:inset-0 before:bg-primary/10 before:[mask-image:url(/images/block/waves.svg)] before:[mask-repeat:repeat] before:[mask-size:_64px_32px]">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-background"></div>
+        <section className="relative min-h-screen">
             <div className="container relative flex flex-col min-h-screen">
-                <div className='py-4 relative z-50'>
-                    <SearchInput />
-                </div>
-
-                {/* Grid des produits avec flex-1 pour prendre l'espace disponible */}
-                <div className="z-30 grid gap-4 md:grid-cols-2 lg:grid-cols-3 flex-1">
-                    {products.map((product) => {
-                        const timeAgo = formatDistanceStrict(new Date(product.createdAt), new Date(), { addSuffix: true });
-                        return (
-                            <div
-                                key={product.id}
-                                className='cursor-pointer'
-                                onClick={() => router.push(`/dashboard/marketplace/${product.id}`)}
+                <div className='flex items-center space-x-4 py-5'>
+                    <div className='flex-grow'>
+                        <SearchInput />
+                    </div>
+                    <div className="">
+                        <div className="flex space-x-2">
+                            <button
+                                onClick={() => setSortOption('name')}
+                                className={`flex items-center space-x-1 px-3 py-1 shadow-sm border text-xs rounded-lg ${sortOption === 'name' ? 'border-blue-500' : ''
+                                    }`}
                             >
-                                <Alert className='bg-muted'>
-                                    <div className="flex items-center gap-2 text-sm">
-                                        <Boxes className="flex-shrink-0 w-3 h-auto text-yellow-400" />
-                                        <AlertTitle className="truncate">{product.name}</AlertTitle>
-                                    </div>
-                                    <AlertDescription className="text-sm text-muted-foreground truncate">
-                                        <div className="flex flex-wrap gap-2 justify-start">
-                                            <Boxes className="flex-shrink-0 w-3 h-auto text-blue-400" />
-                                            {product.category}
-                                            <p className="text-xs text-muted-foreground">{timeAgo}</p>
-                                        </div>
-                                    </AlertDescription>
-                                </Alert>
-                            </div>
-                        );
-                    })}
+                                <VscGitFetch className='mr-2' />
+                                Sort by Name
+                            </button>
+                            <button
+                                onClick={() => setSortOption('date')}
+                                className={`flex items-center space-x-1 px-3 py-1 shadow-sm border text-xs rounded-lg ${sortOption === 'date' ? 'border-blue-500' : ''
+                                    }`}
+                            >
+                                <VscCalendar className='mr-2' />
+                                Sort by Date
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="mb-4 flex flex-wrap gap-2">
+                    {Object.keys(categoryIconMap).map((category) => (
+                        <button
+                            key={category}
+                            onClick={() => setSelectedCategory(selectedCategory === category ? null : category)}
+                            className={`flex items-center space-x-1 px-3 py-1 text-gray-600 shadow-sm border text-xs rounded-md  ${selectedCategory === category ? 'border-blue-500' : ''
+                                }`}
+                        >
+                            <span className={`${categoryIconMap[category].color}`}>
+                                {categoryIconMap[category].icon}
+                            </span>
+                            <span>{category}</span>
+                        </button>
+                    ))}
                 </div>
 
-                {/* Pagination avec mt-auto pour la pousser vers le bas */}
+                {filteredProducts.length === 0 ? (
+                    <div className="text-center text-gray-500 py-10">
+                        <Card className="h-[300px] bg-gradient-to-t from-gray-100 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900 flex items-center justify-center">
+
+                            <CardContent className="font-mono text-xs text-center text-gray-500">
+                                <div className="flex justify-center items-center mb-4">
+                                    <HiCube className="text-2xl text-gray-400" /> {/* Vous pouvez ajuster la taille de l'icône ici */}
+                                </div>
+                                You don't find what you're looking for? Tell us and maybe we'll add it!
+                            </CardContent>
+
+                        </Card>
+                    </div>
+
+                ) : (
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+                        {filteredProducts.map((product) => {
+                            const timeAgo = formatDistanceStrict(new Date(product.createdAt), new Date(), { addSuffix: true });
+                            return (
+                                <div
+                                    key={product.id}
+                                    className='cursor-pointer'
+                                    onClick={() => router.push(`/dashboard/marketplace/${product.id}`)}
+                                >
+                                    <Card className="">
+                                        <CardHeader className="p-4 bg-gray-50 dark:bg-gray-900 rounded-md mb-4">
+                                            <div className="flex justify-between items-center">
+                                                <div className="flex space-x-2">
+                                                    <CardTitle className="font-mono text-sm">{product.name} /</CardTitle>
+                                                    <CardTitle className="font-mono text-xs text-gray-500">{product.category}</CardTitle>
+                                                </div>
+                                                <CardTitle className="font-mono text-xs text-gray-500">{timeAgo}</CardTitle>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent className="font-mono text-xs truncate">
+                                            {product.description}
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+
                 <div className="mt-auto py-8">
                     <Pagination>
                         <PaginationContent>
@@ -152,12 +218,6 @@ const ProductFeature = () => {
                                     </PaginationLink>
                                 </PaginationItem>
                             ))}
-
-                            {totalPages > 5 && currentPage < totalPages - 1 && (
-                                <PaginationItem>
-                                    <PaginationEllipsis />
-                                </PaginationItem>
-                            )}
 
                             <PaginationItem>
                                 <PaginationNext

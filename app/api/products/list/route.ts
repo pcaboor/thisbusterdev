@@ -6,9 +6,11 @@ export async function GET(req: Request) {
     try {
         const session = await getServerSession(authOptions);
 
-        if (!session) {
-            return new Response("Unauthorized", { status: 403 });
-        }
+        // TODOO a voir si il faut gérer le cas où il n'y a pas de session
+
+        // if (!session) {
+        //     return new Response("Unauthorized", { status: 403 });
+        // }
 
         const url = new URL(req.url);
         const page = parseInt(url.searchParams.get("page") || "1"); // La page par défaut est 1

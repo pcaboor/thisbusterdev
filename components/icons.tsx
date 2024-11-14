@@ -36,6 +36,19 @@ import {
 
 } from "lucide-react"
 
+import {
+  AddNoteBulkIcon,
+  CopyDocumentBulkIcon,
+  EditDocumentBulkIcon,
+  DeleteDocumentBulkIcon,
+  AvatarIcon,
+
+  Flash,
+  Lock
+} from "@nextui-org/shared-icons";
+
+import { VscKey, VscBook, VscExtensions, VscSymbolMethod, VscBeaker } from "react-icons/vsc";
+
 export type Icon = LucideIcon
 
 export const Icons = {
@@ -52,8 +65,8 @@ export const Icons = {
   billing: CreditCard,
   codeXml: Code,
   cloud: Cloud,
-  package: Package,
-  key: Key,
+  package: VscSymbolMethod,
+  key: VscKey,
   ellipsis: MoreVertical,
   search: Search,
   add: Plus,
@@ -67,9 +80,13 @@ export const Icons = {
   handMetal: HandMetal,
   wallet: Wallet,
   laptop: Laptop,
-  book: BookOpen,
+  book: VscBook,
   penTool: PenTool,
-  marketPlace: PackageOpen,
+  marketplace: VscExtensions,
+  edit: VscBeaker,
+  delete: DeleteDocumentBulkIcon,
+  addNoteBulk: AddNoteBulkIcon,
+  copyDocumentBulk: CopyDocumentBulkIcon,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

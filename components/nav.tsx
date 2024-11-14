@@ -32,7 +32,7 @@ export function DashboardNav({ items }: DashboardNavProps) {
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                <Icon className="mr-2 h-4 w-4" />
+                <Icon className="mr-2 h-5 w-5" />
                 <span className="text-[13px]">{item.title}</span>
               </span>
             </Link>

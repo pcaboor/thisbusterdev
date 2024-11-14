@@ -31,12 +31,12 @@ export const dashboardConfig: DashboardConfig = {
     {
       title: " Market Place",
       href: "/dashboard/marketplace",
-      icon: "marketPlace",
+      icon: "marketplace",
     },
     {
       title: "Create product",
       href: "/dashboard/create-product",
-      icon: "penTool",
+      icon: "edit",
     },
     {
       title: "Documentation",

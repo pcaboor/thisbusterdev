@@ -1,0 +1,96 @@
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./styles/mdx.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+[data-rehype-pretty-code-fragment] code {
+  display: grid;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  border-radius: 0px;
+  border-width: 0px;
+  background-color: transparent;
+  padding: 0px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  counter-reset: line;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers]>.line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+}
+
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  position: relative;
+}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  border-radius: calc(var(--radius) - 2px);
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+  padding: 0.25rem;
+}
+
+[data-rehype-pretty-code-title] {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+[data-rehype-pretty-code-title]+pre {
+  margin-top: 0px;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  /* Espace pour les numéros de ligne et la marge */
+  position: relative;
+}
+
+[data-rehype-pretty-code-fragment] .line::before {
+  content: counter(line);
+  /* Affiche le numéro de ligne */
+  counter-increment: line;
+  position: absolute;
+  left: 0.75rem;
+  /* Positionnement du numéro à gauche */
+  margin-right: 1rem;
+  /* Ajoute la marge à droite du numéro */
+  color: gray;
+  /* Couleur du numéro de ligne */
+  width: 1.5rem;
+  text-align: right;
+  font-size: 0.875rem;
+  /* Taille de police pour les numéros */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  /* Évite la sélection des numéros */
+}

@@ -22,8 +22,8 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-muted/50">
-      <header className="sticky top-0 z-40 border-b bg-background">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-50 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">
+      <header className="top-0 z-40 border-b bg-gradient-to-tl from-gray-50 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">
         <div className="container flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} />
 
@@ -40,11 +40,11 @@ export default async function DashboardLayout({
         <aside className="hidden w-[200px] flex-col md:flex">
           <DashboardNav items={dashboardConfig.sidebarNav} />
         </aside>
-        <main className="flex w-full flex-1 flex-col overflow-hidden">
+        <main className="flex w-full flex-1 flex-col overflow-hidden bg-gradient-to-tl from-gray-50 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">
           {children}
         </main>
       </div>
-      <SiteFooter className="border-t" />
+      <SiteFooter className="border-t bg-gradient-to-tl from-gray-50 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900" />
     </div>
   )
 }

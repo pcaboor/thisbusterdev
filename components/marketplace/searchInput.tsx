@@ -85,7 +85,7 @@ const SearchInput = () => {
                         setIsDropdownOpen(true);
                     }}
                     className="pl-10 pr-5 py-1.5 w-full border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none text-sm"
-                    placeholder="Search for products..."
+                    placeholder="Search for products or press term + enter to search everything..."
                     style={{ paddingLeft: '2.5rem' }}
                 />
             </form>
@@ -101,12 +101,12 @@ const SearchInput = () => {
                         <div className="px-4 py-2 text-red-500">Error loading data</div>
                     ) : results ? (
                         <>
-                            <div className="px-4 py-2 font-bold">API</div>
+                            <div className="px-4 py-2 font-bold border-b">API</div>
                             {results.names.length > 0 ? (
-                                results.names.map((product) => (
+                                results.names.map((product, index) => (
                                     <div
                                         key={product.id}
-                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm font-medium"
+                                        className={`px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm font-medium ${index !== results.names.length - 1 ? 'border-b' : ''}`}
                                         onClick={() => router.push(`/dashboard/marketplace/${product.id}`)}
                                     >
                                         <div className='text-sm font-semibold'>
@@ -127,6 +127,7 @@ const SearchInput = () => {
                 </div>
             )}
         </div>
+
     );
 };
 

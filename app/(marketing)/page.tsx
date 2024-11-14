@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import HeroFormCenterAlignedSearchWithTags from "@/components/blocks/landing_page_header"
+import ProductFeature from "@/components/blocks/dashboard_block1"
 
 
 
@@ -39,10 +40,10 @@ export default async function IndexPage() {
   const stars = await getGitHubStars()
 
   return (
-    <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-20">
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <HeroFormCenterAlignedSearchWithTags />
+    <div className="bg-gradient-to-t from-gray-100 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">
+      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-20 ">
+        <div className="container flex w-full flex-col items-center gap-4 text-center">
+
           <Link
             href={siteConfig.links.twitter}
             className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
@@ -71,10 +72,22 @@ export default async function IndexPage() {
             </Link>
           </div>
         </div>
-
+        <ProductFeature />
       </section>
 
-      <section
+
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+{/* <section
         id="features"
         className="container space-y-6 py-8 dark:bg-transparent md:py-12 lg:py-24"
       >
@@ -175,7 +188,4 @@ export default async function IndexPage() {
             </div>
           </div>
         </div>
-      </section>
-    </>
-  )
-}
+      </section> */}
