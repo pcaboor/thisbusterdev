@@ -19,17 +19,13 @@ export default async function MarketPlacePage() {
     }
 
     return (
-        <div className="">
-            <div className="flex flex-col md:flex-row gap-8">
-                <aside className="w-full md:w-64 lg:w-72 flex-shrink-0">
-                    <div className="pt-6">
-                        <SearchInput />
-                    </div>
-                </aside>
-                <div className="flex-grow">
 
-                    <DashboardBlock1 />
-                </div>
+        <div className="flex flex-col md:flex-row gap-8">
+
+            <div className="flex-grow">
+
+                <DashboardBlock1 />
+
 
             </div>
         </div>

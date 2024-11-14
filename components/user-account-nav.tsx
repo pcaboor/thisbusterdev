@@ -22,7 +22,6 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
   return (
     <div className="flex items-center gap-4">
       {/* Utilisation de `flex` et `gap-4` pour un espacement horizontal */}
-      <SearchInput />
       <DropdownMenu>
         <DropdownMenuTrigger>
           <UserAvatar

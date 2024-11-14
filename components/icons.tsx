@@ -19,6 +19,7 @@ import {
   Moon,
   MoreVertical,
   Pizza,
+  BookOpen,
   Plus,
   Settings,
   HandMetal,
@@ -30,7 +31,7 @@ import {
   X,
   Code,
   PackageOpen,
-
+  Search,
   type Icon as LucideIcon,
 
 } from "lucide-react"
@@ -54,6 +55,7 @@ export const Icons = {
   package: Package,
   key: Key,
   ellipsis: MoreVertical,
+  search: Search,
   add: Plus,
   warning: AlertTriangle,
   user: User,
@@ -65,6 +67,7 @@ export const Icons = {
   handMetal: HandMetal,
   wallet: Wallet,
   laptop: Laptop,
+  book: BookOpen,
   penTool: PenTool,
   marketPlace: PackageOpen,
   gitHub: ({ ...props }: LucideProps) => (

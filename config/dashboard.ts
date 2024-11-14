@@ -2,15 +2,15 @@ import { DashboardConfig } from "types"
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
-    {
-      title: "Documentation",
-      href: "/docs",
-    },
-    {
-      title: "Support",
-      href: "/support",
-      disabled: true,
-    },
+    // {
+    //   title: "Documentation",
+    //   href: "/docs",
+    // },
+    // {
+    //   title: "Support",
+    //   href: "/support",
+    //   disabled: true,
+    // },
   ],
   sidebarNav: [
     {
@@ -37,6 +37,11 @@ export const dashboardConfig: DashboardConfig = {
       title: "Create product",
       href: "/dashboard/create-product",
       icon: "penTool",
+    },
+    {
+      title: "Documentation",
+      href: "/docs",
+      icon: "book",
     },
     {
       title: "Storage",

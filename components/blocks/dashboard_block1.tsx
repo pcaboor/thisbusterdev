@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '../ui/button';
 import { format, formatDistanceStrict, formatDistanceToNow } from 'date-fns';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import SearchInput from '../marketplace/searchInput';
 
 interface Product {
     id: string;
@@ -88,35 +89,29 @@ const ProductFeature = () => {
     }
 
     return (
-        <section className="relative py-4 before:absolute before:inset-0 before:bg-primary/10 before:[mask-image:url(/images/block/waves.svg)] before:[mask-repeat:repeat] before:[mask-size:_64px_32px]">
+        <section className="relative min-h-screen before:absolute before:inset-0 before:bg-primary/10 before:[mask-image:url(/images/block/waves.svg)] before:[mask-repeat:repeat] before:[mask-size:_64px_32px]">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-background"></div>
-            <div className="container relative">
-                <h2 className="mb-8 max-w-screen-sm text-balance text-2xl font-semibold lg:text-4xl">
-                    Explore our Products
-                </h2>
-                <div className="z-30 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="container relative flex flex-col min-h-screen">
+                <div className='py-4 relative z-50'>
+                    <SearchInput />
+                </div>
+
+                {/* Grid des produits avec flex-1 pour prendre l'espace disponible */}
+                <div className="z-30 grid gap-4 md:grid-cols-2 lg:grid-cols-3 flex-1">
                     {products.map((product) => {
                         const timeAgo = formatDistanceStrict(new Date(product.createdAt), new Date(), { addSuffix: true });
-                        // const { icon, color } = categoryIconMap[product.category] || {};
-
                         return (
                             <div
                                 key={product.id}
                                 className='cursor-pointer'
-                                onClick={() => router.push(`/dashboard/marketplace/${product.id}`)} // Ajout du slash initial pour le chemin
+                                onClick={() => router.push(`/dashboard/marketplace/${product.id}`)}
                             >
-                                <div  >
-                                    {/* className={`text-3xl ${color}`}*/}
-                                    {/* {icon} */}
-                                </div>
                                 <Alert className='bg-muted'>
-
                                     <div className="flex items-center gap-2 text-sm">
                                         <Boxes className="flex-shrink-0 w-3 h-auto text-yellow-400" />
                                         <AlertTitle className="truncate">{product.name}</AlertTitle>
                                     </div>
                                     <AlertDescription className="text-sm text-muted-foreground truncate">
-                                        {/* <span className="truncate max-w-xs">{product.description}</span> */}
                                         <div className="flex flex-wrap gap-2 justify-start">
                                             <Boxes className="flex-shrink-0 w-3 h-auto text-blue-400" />
                                             {product.category}
@@ -124,13 +119,13 @@ const ProductFeature = () => {
                                         </div>
                                     </AlertDescription>
                                 </Alert>
-
                             </div>
                         );
                     })}
                 </div>
 
-                <div className="mt-8 flex justify-center">
+                {/* Pagination avec mt-auto pour la pousser vers le bas */}
+                <div className="mt-auto py-8">
                     <Pagination>
                         <PaginationContent>
                             <PaginationItem>

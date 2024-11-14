@@ -19,7 +19,7 @@ export function DashboardNav({ items }: DashboardNavProps) {
   }
 
   return (
-    <nav className="grid items-start gap-2">
+    <nav className="grid items-start gap-2 p-4">
       {items.map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"]
         return (
@@ -33,7 +33,7 @@ export function DashboardNav({ items }: DashboardNavProps) {
                 )}
               >
                 <Icon className="mr-2 h-4 w-4" />
-                <span className="text-sm">{item.title}</span>
+                <span className="text-[13px]">{item.title}</span>
               </span>
             </Link>
           )

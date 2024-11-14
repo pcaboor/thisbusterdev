@@ -39,11 +39,9 @@ export default async function DashboardPage() {
   return (
     <div>
       {/* <DashboardBlock1 /> */}
-      <SearchInput />
       <DashboardShell>
         <DashboardHeader heading="API" text="Create and manage api.">
           <PostCreateButton />
-
         </DashboardHeader>
         <div>
           {posts?.length ? (
@@ -51,8 +49,6 @@ export default async function DashboardPage() {
               {posts.map((post) => (
                 <PostItem key={post.id} post={post} />
               ))}
-
-
             </div>
           ) : (
             <EmptyPlaceholder>
