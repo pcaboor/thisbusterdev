@@ -31,6 +31,8 @@ import {
   X,
   Code,
   PackageOpen,
+  Dices,
+  ToyBrick,
   Search,
   type Icon as LucideIcon,
 
@@ -52,7 +54,7 @@ import { VscKey, VscBook, VscExtensions, VscSymbolMethod, VscBeaker } from "reac
 export type Icon = LucideIcon
 
 export const Icons = {
-  logo: HandMetal,
+  logo: ToyBrick,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
@@ -77,7 +79,7 @@ export const Icons = {
   pizza: Pizza,
   sun: SunMedium,
   moon: Moon,
-  handMetal: HandMetal,
+  handMetal: Dices,
   wallet: Wallet,
   laptop: Laptop,
   book: VscBook,

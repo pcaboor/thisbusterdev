@@ -117,6 +117,9 @@ export default function CreateProduct() {
             <div>
                 <h2>Product Documentation</h2>
                 <MdEditor
+                    toolbarsExclude={['github']}
+                    previewTheme='github'
+                    placeholder="Enter product documentation here"
                     language="en-US"
                     theme={mdPreviewTheme}
                     modelValue={docsText}

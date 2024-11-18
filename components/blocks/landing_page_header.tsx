@@ -1,23 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-    Briefcase,
-    Flower,
-    Heart,
-    Lightbulb,
-    MountainSnow,
-    Search,
-    Settings,
-} from "lucide-react";
-import Link from "next/link";
-
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import MarketPlace from "@/app/(dashboard)/dashboard/marketplace/page";
-import MarketPlacePage from "@/app/(dashboard)/dashboard/marketplace/page";
-
-
+import SearchInput from "../marketplace/searchInput";
 
 export default function HeroFormCenterAlignedSearchWithTags() {
     return (
@@ -37,9 +18,10 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                                 GitHub
                             </Link>
                         </div>*/}
-            <div className="relative overflow-hidden">
-                <div className="container mb-10">
-                    <div className="text-center">
+            <div className="relative ">
+                <div className="container my-20">
+                    <div className="text-start">
+
                         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                             Find the best API
                         </h1>
@@ -53,28 +35,12 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                         <p className="mt-3 text-xl text-muted-foreground">
                             Stay in the know with insights from industry experts.
                         </p>
-                        <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
+                        <div className="mt-7 sm:mt-12 mx-auto relative">
                             {/* Form */}
-                            <form>
-                                <div className="relative z-10 flex space-x-3 p-3 border bg-background rounded-lg shadow-lg">
-                                    <div className="flex-[1_0_0%]">
-                                        <Label htmlFor="article" className="sr-only">
-                                            Search API
-                                        </Label>
-                                        <Input
-                                            name="article"
-                                            className="h-full"
-                                            id="article"
-                                            placeholder="Search API"
-                                        />
-                                    </div>
-                                    <div className="flex-[0_0_auto]">
-                                        <Button size={"icon"}>
-                                            <Search />
-                                        </Button>
-                                    </div>
-                                </div>
-                            </form>
+
+                            <div className="relative z-50 flex space-x-3 p-3  bg-background rounded-lg shadow-lg">
+                                <SearchInput />
+                            </div>
                             {/* End Form */}
                             {/* SVG Element */}
                             <div className="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
@@ -126,84 +92,8 @@ export default function HeroFormCenterAlignedSearchWithTags() {
                                 </svg>
 
                             </div>
-
                             {/* End SVG Element */}
 
-                        </div>
-
-                        <div className="mt-10 sm:mt-20 flex flex-wrap gap-2 justify-center">
-                            <Button variant={"outline"}>
-                                <Briefcase className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Business
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Settings className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Strategy
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Heart className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Health
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Lightbulb className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Creative
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Flower className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Environment
-                            </Button>
-                            <Button variant={"outline"}>
-                                <MountainSnow className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Adventure
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Briefcase className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Business
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Settings className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Strategy
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Heart className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Health
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Lightbulb className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Creative
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Flower className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Environment
-                            </Button>
-                            <Button variant={"outline"}>
-                                <MountainSnow className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Adventure
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Briefcase className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Business
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Settings className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Strategy
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Heart className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Health
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Lightbulb className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Creative
-                            </Button>
-                            <Button variant={"outline"}>
-                                <Flower className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Environment
-                            </Button>
-                            <Button variant={"outline"}>
-                                <MountainSnow className="flex-shrink-0 w-3 h-auto mr-2" />
-                                Adventure
-                            </Button>
                         </div>
                     </div>
                 </div>

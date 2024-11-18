@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import HeroFormCenterAlignedSearchWithTags from "@/components/blocks/landing_page_header"
 import ProductFeature from "@/components/blocks/dashboard_block1"
+import Bentodemo from "@/components/landing_page/bentogrid"
+import Feature1 from "@/components/landing_page/hero"
+
 
 
 
@@ -41,8 +44,13 @@ export default async function IndexPage() {
 
   return (
     <div className="bg-gradient-to-t from-gray-100 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">
+      <div className="container max-w-6xl mx-auto flex w-full flex-col">
+        <HeroFormCenterAlignedSearchWithTags />
+        <Feature1 />
+      </div>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-20 ">
-        <div className="container flex w-full flex-col items-center gap-4 text-center">
+
+        {/* <div className="container max-w-5xl mx-auto p-4 flex w-full flex-col items-center gap-4 text-center">
 
           <Link
             href={siteConfig.links.twitter}
@@ -71,8 +79,16 @@ export default async function IndexPage() {
               GitHub
             </Link>
           </div>
+        </div> */}
+        <div className="container max-w-5xl mx-auto p-4">
+          <ProductFeature />
+
         </div>
-        <ProductFeature />
+
+        {/* <div className="items-center h-[750px] p-8 mt-12 justify-center md:h-auto dark:bg-black bg-white relative w-full">
+          <Bentodemo />
+
+        </div> */}
       </section>
 
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { Box } from 'lucide-react';
+import { Box, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
@@ -88,42 +88,44 @@ const SearchInput = () => {
                     placeholder="Search for products or press term + enter to search everything..."
                     style={{ paddingLeft: '2.5rem' }}
                 />
+                {isLoading && (
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                        <Loader2 className="w-5 h-5 text-blue-500 animate-spin" />
+                    </div>
+                )}
             </form>
 
             {isDropdownOpen && (
                 <div
                     ref={dropdownRef}
-                    className="absolute w-full bg-primary-foreground shadow-lg rounded-md mt-2 z-10"
+                    className="absolute w-full bg-primary-foreground shadow-lg rounded-md mt-2 z-10 "
                 >
-                    {isLoading ? (
-                        <div className="px-4 py-2 text-gray-500">Loading...</div>
-                    ) : error ? (
-                        <div className="px-4 py-2 text-red-500">Error loading data</div>
-                    ) : results ? (
+                    {results ? (
                         <>
-                            <div className="px-4 py-2 font-bold border-b">API</div>
+                            <div className="px-4 py-2 font-bold border-b bg-gradient-to-b from-gray-50 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">API</div>
                             {results.names.length > 0 ? (
                                 results.names.map((product, index) => (
                                     <div
                                         key={product.id}
-                                        className={`px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm font-medium ${index !== results.names.length - 1 ? 'border-b' : ''}`}
+                                        className={`px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer text-sm font-medium ${index !== results.names.length - 1 ? 'border-b' : ''}`}
                                         onClick={() => router.push(`/dashboard/marketplace/${product.id}`)}
                                     >
-                                        <div className='text-sm font-semibold'>
+                                        <div className='text-base font-semibold'>
                                             {highlightText(product.name, searchQuery || '')}
                                         </div>
-                                        <div className="font-mono truncate text-[10px]">
+                                        <div className="font-mono truncate text-sm">
                                             {highlightText(product.description, searchQuery || '')}
                                         </div>
                                     </div>
                                 ))
                             ) : (
-                                <div className="px-4 py-2 text-gray-500">No names found</div>
+                                <div className="px-4 py-2 text-gray-500 text-sm">No names found</div>
                             )}
                         </>
                     ) : (
                         <div className="px-4 py-2 text-gray-500 text-sm">No results found</div>
-                    )}
+                    )
+                    }
                 </div>
             )}
         </div>

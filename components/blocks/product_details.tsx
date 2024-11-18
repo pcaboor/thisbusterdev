@@ -8,6 +8,7 @@ import formatDistanceStrict from "date-fns/formatDistanceStrict";
 import { MdPreview } from "md-editor-rt";
 import { useTheme } from "next-themes";
 import DocsPreview from "../editor_markdown/docsPreview";
+import MarkdownPreview from "../editor_markdown/MarkdownPreview";
 
 
 interface Product {
@@ -89,113 +90,87 @@ const ProductDetails = ({ params }: ProductDetailProps) => {
     console.log(product.docs);
 
     return (
-        <section>
-            <div className="flex w-full flex-col items-center pb-8  md:flex-row md:pb-10 lg:pb-16">
-
-                <article className="prose dark:prose-invert prose-sm">
+        <section className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+            <div className="flex flex-col md:flex-row md:gap-8">
+                <article className="w-full md:flex-1 dark:prose-invert prose-sm">
                     <button
                         onClick={() => router.back()}
-                        className="mt-4 py-1 rounded-md"
+                        className="pb-2 "
                     >
                         ← Go Back
                     </button>
 
-
-                    <div className="flex flex-col items-start gap-2 md:flex-row md:items-start md:justify-between">
-                        <h1 className="font-mono text-basic">{product.name}</h1>
-                        <div className="flex flex-wrap gap-2 justify-start">
-
-                            <Button variant={"outline"} size={"xs"}>
-                                <GitPullRequest className="flex-shrink-0 w-3 h-auto" />
+                    <div className="flex flex-col gap-4 md:flex-row md:justify-between">
+                        <h1 className="text-xl font-semibold">{product.name}</h1>
+                        <div className="flex flex-wrap gap-2">
+                            <Button variant="outline" size="xs">
+                                <GitPullRequest className="w-4 h-4" />
                                 Request
                             </Button>
-                            <Button variant={"secondary"} size={"xs"}>
-                                <TerminalSquare className="flex-shrink-0 w-3 h-auto" />
+                            <Button variant="secondary" size="xs">
+                                <TerminalSquare className="w-4 h-4" />
                                 Test
                             </Button>
-                            <Button variant={"default"} size={"xs"} className="bg-blue-600 text-white hover:bg-blue-600">
+                            <Button className="bg-blue-600 text-white hover:bg-blue-700" size="xs">
                                 Use this API
                             </Button>
                         </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">{timeAgo}</p>
-                    <p>
-                        {product.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 justify-start">
-                        <Button variant={"outline"} size={"sm"}>
-                            <Boxes className="flex-shrink-0 w-3 h-auto text-yellow-400" />
+
+                    <p className="text-sm text-gray-500">{timeAgo}</p>
+                    <p className="mt-2">{product.description}</p>
+
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        <Button variant="outline" size="sm">
+                            <Boxes className="w-4 h-4 text-yellow-500" />
                             {product.category}
                         </Button>
-                        <Button variant={"outline"} size={"sm"}>
-                            <Code2 className="flex-shrink-0 w-3 h-auto text-blue-400" />
+                        <Button variant="outline" size="sm">
+                            <Code2 className="w-4 h-4 text-blue-500" />
                             {product.language}
                         </Button>
-                        <Button variant={"outline"} size={"sm"}>
-                            <BookOpen className="flex-shrink-0 w-3 h-auto text-purple-400" />
+                        <Button variant="outline" size="sm">
+                            <BookOpen className="w-4 h-4 text-purple-500" />
                             {product.license}
                         </Button>
-                        <Button variant={"outline"} size={"sm"}>
-                            <Heart className="flex-shrink-0 w-3 h-auto text-red-500" />
+                        <Button variant="outline" size="sm">
+                            <Heart className="w-4 h-4 text-red-500" />
                             {product.likecount}
                         </Button>
                     </div>
-                    <DocsPreview content={product.docs} />
 
+                    <div className="mt-6">
+                        <MarkdownPreview content={product.docs} />
+                    </div>
                 </article>
 
-                <aside className="mr-6 mb-8 w-full self-start pt-10 md:sticky md:ml-8 md:w-fit md:min-w-64 md:flex-1 lg:ml-10 lg:shrink-0 2xl:w-full">
-                    <div className="">
-                        <div className="hidden w-full md:mt-1 md:block">
+                {/* Aside pour les informations supplémentaires */}
+                {/* <aside className="mt-8 md:mt-0 md:w-64 md:flex-shrink-0">
+                    <div className="rounded border border-gray-300 bg-gray-100 p-4 dark:border-gray-700 dark:bg-gray-800">
+                        <h3 className="text-lg font-semibold mb-4">About {product.name}</h3>
+                        <div className="text-sm mb-2">
+                            <span className="font-bold">Company:</span> Some Company
+                        </div>
+                        <div className="text-sm mb-2">
+                            <span className="font-bold">Industry:</span> Technology
+                        </div>
+                        <div className="text-sm mb-2">
+                            <span className="font-bold">Location:</span> London, UK
+                        </div>
+                        <div className="text-sm mb-2">
+                            <span className="font-bold">Size:</span> 11-50 employees
+                        </div>
+                        <div className="text-sm">
+                            <span className="font-bold">Website:</span>{" "}
+                            <a href="https://example.com" className="text-blue-600 underline">
+                                https://example.com
+                            </a>
                         </div>
                     </div>
-                    <div className="flex flex-col rounded-xl border border-border bg-accent py-6 md:py-8">
-                        <div className="md:mb-4.5 mb-6 px-6 font-medium leading-5">
-                            About {product.name}
-                        </div>
-                        <div className="mb-5 px-6 last:mb-0">
-                            <div className="mb-2 text-xs font-semibold">Company</div>
-                            <div className="overflow-hidden text-xs text-muted-foreground md:text-sm">
-                                Suspendisse vel euismod sem. Sed sollicitudin augue eu facilisis
-                                scelerisque. Nullam pharetra tortor ut massa accumsan egestas.
-                            </div>
-                        </div>
-                        <div className="mb-5 px-6 last:mb-0">
-                            <div className="mb-2 text-xs font-semibold">Industry</div>
-                            <div className="overflow-hidden text-xs text-muted-foreground md:text-sm">
-                                Suspendisse volutpat
-                            </div>
-                        </div>
-                        <div className="mb-5 border-t border-border px-6 pt-5 last:mb-0">
-                            <div className="mb-2 text-xs font-semibold">Location</div>
-                            <div className="overflow-hidden text-xs text-muted-foreground md:text-sm">
-                                London, United Kingdom
-                            </div>
-                        </div>
-                        <div className="mb-5 px-6 last:mb-0">
-                            <div className="mb-2 text-xs font-semibold">Company size</div>
-                            <div className="overflow-hidden text-xs text-muted-foreground md:text-sm">
-                                11-50
-                            </div>
-                        </div>
-                        <div className="mb-5 px-6 last:mb-0">
-                            <div className="mb-2 text-xs font-semibold">Website</div>
-                            <div className="overflow-hidden text-xs text-muted-foreground md:text-sm">
-                                <a href="#" className="underline hover:text-foreground">
-                                    https://example.com/
-                                </a>
-                            </div>
-                        </div>
-                        <div className="mb-5 px-6 last:mb-0">
-                            <div className="mb-2 text-xs font-semibold">Topics</div>
-                            <div className="overflow-hidden text-xs text-muted-foreground md:text-sm">
-                                Sed sollicitudin augue eu facilisis scelerisque
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+                </aside> */}
             </div>
         </section>
+
     );
 };
 

@@ -13,7 +13,10 @@ export default function DocsPreview({ content }) {
 
     return (
         <div className="w-full">
+
             <MdPreview
+                previewTheme='github'
+                codeTheme='github'
                 theme={mdPreviewTheme}
                 language="en-US"
                 modelValue={safeContent}
