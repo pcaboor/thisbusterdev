@@ -90,12 +90,12 @@ model Post {
 }
 
 model Product {
-  id              String   @id @default(cuid())
+  id              String     @id @default(cuid())
   name            String
   description     String?
   price           Float
-  currency        String   @default("USD")
-  active          Boolean  @default(true)
+  currency        String     @default("USD")
+  active          Boolean    @default(true)
   requestLimit    Int // Limite de requêtes mensuelles
   bandwidthLimit  Int // Limite de bande passante mensuelle en Mo
   category        String // Catégorie du produit
@@ -103,13 +103,13 @@ model Product {
   language        String // Dev language ex: JS, Python
   license         String // ex: MIT
   likecount       Int // Nombre de favoris
-  docs            String?  @db.Text
-  createdAt       DateTime @default(now()) @map("created_at")
-  updatedAt       DateTime @updatedAt @map("updated_at")
-  stripeProductId String?  @unique
-  stripePriceId   String?  @unique
-
-  apiUsages ApiUsage[]
+  docs            String?    @db.Text
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+  stripeProductId String?    @unique
+  stripePriceId   String?    @unique
+  image           String?    @db.Text
+  apiUsages       ApiUsage[]
 
   @@map("products")
 }
