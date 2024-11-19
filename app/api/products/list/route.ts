@@ -30,6 +30,7 @@ export async function GET(req: Request) {
                 language: true,
                 license: true,
                 likecount: true,
+                image: true
             },
             where: {
                 active: true,

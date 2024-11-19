@@ -12,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { UserAvatar } from "@/components/user-avatar"
-import SearchInput from "./marketplace/searchInput"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "name" | "image" | "email">
@@ -31,7 +30,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <div className="flex items-center justify-start gap-2 p-2">
-            <div className="flex flex-col space-y-1 leading-none">
+            <div className="flex flex-col space-y-1 leading-none text-sm">
               {user.name && <p className="font-medium">{user.name}</p>}
               {user.email && (
                 <p className="w-[200px] truncate text-sm text-muted-foreground">
@@ -41,7 +40,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
             </div>
           </div>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem asChild >
             <Link href="/dashboard">Dashboard</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>

@@ -4,6 +4,7 @@ import { Box, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
+import { Avatar, AvatarImage } from '../ui/avatar';
 
 const fetcher = async (url: string) => {
     const response = await fetch(url);
@@ -72,6 +73,9 @@ const SearchInput = () => {
 
     const results = data && data.products ? organizeResults(data.products) : null;
 
+
+
+
     return (
         <div className="relative w-2/3">
             <form onSubmit={onSearch} className="flex items-center">
@@ -98,11 +102,11 @@ const SearchInput = () => {
             {isDropdownOpen && (
                 <div
                     ref={dropdownRef}
-                    className="absolute w-full bg-primary-foreground shadow-lg rounded-md mt-2 z-10 "
+                    className="absolute w-full bg-primary-foreground shadow-lg rounded-md mt-2 z-10 border-2"
                 >
                     {results ? (
                         <>
-                            <div className="px-4 py-2 font-bold border-b bg-gradient-to-b from-gray-50 via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-gray-900">API</div>
+                            <div className="px-4 py-2 font-semibold border-b rounded-sm">API</div>
                             {results.names.length > 0 ? (
                                 results.names.map((product, index) => (
                                     <div
@@ -110,10 +114,12 @@ const SearchInput = () => {
                                         className={`px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer text-sm font-medium ${index !== results.names.length - 1 ? 'border-b' : ''}`}
                                         onClick={() => router.push(`/dashboard/marketplace/${product.id}`)}
                                     >
-                                        <div className='text-base font-semibold'>
+
+                                        <div className='text-sm font-semibold'>
                                             {highlightText(product.name, searchQuery || '')}
+
                                         </div>
-                                        <div className="font-mono truncate text-sm">
+                                        <div className="truncate text-xs dark:text-gray-400 text-gray-500 font-mono ">
                                             {highlightText(product.description, searchQuery || '')}
                                         </div>
                                     </div>

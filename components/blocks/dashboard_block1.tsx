@@ -9,6 +9,8 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink, Paginati
 import formatDistanceStrict from 'date-fns/formatDistanceStrict';
 import { VscCalendar, VscGitFetch } from "react-icons/vsc";
 import { HiCube } from "react-icons/hi2";
+import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
+import { UserAvatar } from '../user-avatar';
 
 interface Product {
     id: string;
@@ -175,7 +177,15 @@ const ProductFeature = () => {
                                         <CardHeader className="p-4 bg-gray-50 dark:bg-gray-900 rounded-md mb-4">
                                             <div className="flex justify-between items-center">
                                                 <div className="flex space-x-2">
-                                                    <CardTitle className="font-mono text-sm">{product.name} /</CardTitle>
+                                                    <CardTitle className="font-mono text-xs text-gray-500"> <Avatar>
+                                                        <AvatarImage src={product.image} className='h-5' />
+                                                    </Avatar></CardTitle>
+                                                    <div className="w-48"> {/* Définit une largeur fixe de 12rem */}
+                                                        <CardTitle className="font-mono text-sm truncate">
+                                                            {product.name} /
+                                                        </CardTitle>
+                                                    </div>
+
                                                     <CardTitle className="font-mono text-xs text-gray-500">{product.category}</CardTitle>
                                                 </div>
                                                 <CardTitle className="font-mono text-xs text-gray-500">{timeAgo}</CardTitle>

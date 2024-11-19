@@ -1,17 +1,9 @@
 {
-  "/not-found": "app/not-found.js",
+  "/api/products/random/route": "app/api/products/random/route.js",
   "/api/products/list/route": "app/api/products/list/route.js",
   "/api/search/route": "app/api/search/route.js",
-  "/api/products/[id]/route": "app/api/products/[id]/route.js",
-  "/(marketing)/page": "app/(marketing)/page.js",
-  "/(marketing)/products/page": "app/(marketing)/products/page.js",
-  "/(marketing)/pricing/page": "app/(marketing)/pricing/page.js",
-  "/(marketing)/blog/page": "app/(marketing)/blog/page.js",
-  "/(marketing)/blog/[...slug]/page": "app/(marketing)/blog/[...slug]/page.js",
   "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
   "/(dashboard)/dashboard/marketplace/page": "app/(dashboard)/dashboard/marketplace/page.js",
-  "/(dashboard)/dashboard/search/page": "app/(dashboard)/dashboard/search/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js",
   "/(marketing)/[...slug]/page": "app/(marketing)/[...slug]/page.js",
-  "/(dashboard)/dashboard/marketplace/[id]/page": "app/(dashboard)/dashboard/marketplace/[id]/page.js"
+  "/(marketing)/page": "app/(marketing)/page.js"
 }

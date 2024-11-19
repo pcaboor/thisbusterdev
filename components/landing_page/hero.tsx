@@ -1,11 +1,17 @@
-import { BentoDemo } from './bentogrid';
+
+import AIInput_03 from '../marketplace/input';
+import { BentoGridThirdDemo } from './bentogrid';
+import { AppleCardsCarouselDemo } from './Carousel';
+import { FeaturesSectionDemo } from './FeaturesBento';
 
 const Feature1 = () => {
     return (
         <section className="">
             <div className="container">
-                <BentoDemo />
-                <BentoDemo />
+                <AIInput_03 />
+                <BentoGridThirdDemo />
+                <FeaturesSectionDemo />
+                <AppleCardsCarouselDemo />
             </div>
         </section>
     );

@@ -30,6 +30,7 @@ export async function GET(
                 license: true,
                 likecount: true,
                 createdAt: true,
+                image: true,
                 docs: true,
             },
         });

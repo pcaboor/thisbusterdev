@@ -9,6 +9,8 @@ import { PostCreateButton } from "@/components/post-create-button"
 import { PostItem } from "@/components/post-item"
 import { DashboardShell } from "@/components/shell"
 import SearchInput from "@/components/marketplace/searchInput"
+import { BentoGridThirdDemo } from "@/components/landing_page/bentogrid"
+import RandomProducts from "@/components/marketplace/RanfomProducts"
 
 export const metadata = {
   title: "Dashboard",
@@ -39,7 +41,13 @@ export default async function DashboardPage() {
   return (
     <div>
       {/* <DashboardBlock1 /> */}
-      <DashboardShell>
+      <div className="py-4 container">
+        <SearchInput />
+        <RandomProducts />
+      </div>
+
+      <BentoGridThirdDemo />
+      {/* <DashboardShell className="container py-4">
         <DashboardHeader heading="API" text="Create and manage api.">
           <PostCreateButton />
         </DashboardHeader>
@@ -61,7 +69,7 @@ export default async function DashboardPage() {
             </EmptyPlaceholder>
           )}
         </div>
-      </DashboardShell>
+      </DashboardShell> */}
     </div>
   )
 }
